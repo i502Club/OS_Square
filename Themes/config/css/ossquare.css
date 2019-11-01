@@ -1,0 +1,52 @@
+﻿@media only screen and (min-width : 450px) {
+    #sq-container{width:300px;}
+    #sq-container h3 {white-space:nowrap;}
+}
+
+#sq-container #sq-errmsg {margin:1em;}
+
+/*Square Form Styles */
+.sq-input {
+    border: 1px solid rgb(223, 223, 223);
+    outline-offset: -2px;
+    margin-bottom: 5px;
+}
+
+.sq-input--focus {
+    /* how your inputs should appear when they have focus */
+    outline: 5px auto rgb(59, 153, 252);
+}
+
+.sq-input--error {
+    /* how your inputs should appear when invalid */
+    outline: 5px auto rgb(255, 97, 97);
+}
+
+/* Default buttons */
+.paybutton {
+    background: #1AA8E3;
+    color: #FFFFFF;
+}
+
+.paybutton:hover {
+    background: #23BAF5;
+    color: #FFFFFF;
+}
+
+.paybutton {
+    display: inline-block;
+    font-weight: bold;
+    line-height: 35px;
+    padding: 0 10px;
+    margin: 10px 10px 10px 0;
+    text-align: center;
+    width: 45%;
+    border: medium none;
+    text-decoration: none;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.paybutton:hover {
+    text-decoration: none;
+}

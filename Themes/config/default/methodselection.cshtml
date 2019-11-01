@@ -1,0 +1,157 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Portals
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/i502Club/OS_Square/App_LocalResources")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+}
+<script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
+<script type="text/javascript" src="/DesktopModules/i502Club/OS_Square/themes/config/js/jquery.cookie.min.js"></script>
+<link rel="stylesheet" href="/DesktopModules/i502Club/OS_Square/themes/config/css/ossquare.css">
+
+<script type="text/javascript">
+    var paymentForm = new SqPaymentForm({
+        applicationId: '@info.GetXmlProperty("genxml/textbox/applicationid", true)',
+        inputClass: 'sq-input',
+        cardNumber: {
+            elementId: 'sq-card-number',
+            placeholder: '•••• •••• •••• ••••'
+        },
+        cvv: {
+            elementId: 'sq-cvv',
+            placeholder: 'CVV'
+        },
+        expirationDate: {
+            elementId: 'sq-expiration-date',
+            placeholder: 'MM/YY'
+        },
+        postalCode: {
+            elementId: 'sq-postal-code'
+        },
+        callbacks: {
+            cardNonceResponseReceived: function (errors, nonce, cardData) {
+                if (errors) {
+                    // handle errors
+                    errors.forEach(function (error) {
+                        console.log(error.message);
+                        $(".sq-errmsg").addClass("alert alert-warning");
+                        $(".sq-errmsg").append(ossquare.toTitleCase(error.message) + "<br />");
+                    });
+                    $(".processing").hide();
+                    return false;
+                } else {
+
+                    // Setting a short lived cookie to pass the nonce. It gets removed when the 
+                    // Square.Connect assembly finishes a charge and the user gets redirected.
+                    var homeUrl = location.origin;
+                    Cookies.set('nonce', nonce, { expires: 1/24, path: '/', domain: homeUrl.replace(location.protocol, "").replace("//", "").replace("/", "") });
+
+                    location.href = "?provider=@info.GetXmlProperty("genxml/hidden/ctrl")";
+                }
+
+            },
+            unsupportedBrowserDetected: function () {
+                // Alert the buyer that their browser is not supported
+                $(".sq-errmsg").addClass("alert alert-warning");
+                $(".sq-errmsg").append("Browser not supported<br />");
+            },
+            inputEventReceived: function (inputEvent) {
+                switch (inputEvent.eventType) {
+                    case 'focusClassAdded':
+                        // Handle as desired
+                        break;
+                    case 'focusClassRemoved':
+                        // Handle as desired
+                        break;
+                    case 'errorClassAdded':
+                        // Handle as desired
+                        break;
+                    case 'errorClassRemoved':
+                        // Handle as desired
+                        break;
+                    case 'cardBrandChanged':
+                        // Handle as desired
+                        break;
+                    case 'postalCodeChanged':
+                        // Handle as desired
+                        break;
+                }
+            }
+        }
+    });
+
+    var ossquare = (function () {
+
+        // helper function to format returned messages properly
+        var toTitleCase = function toTitleCase(str) {
+            return str.replace(
+                /\w\S*/g,
+                function (txt) {
+                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase().replace("vv","VV");
+                }
+            );
+        };
+
+        return {
+            init: function () {
+
+                $("#sq-container .paybutton").unbind("click");
+                $("#sq-container .paybutton").click(function () {
+                    $(".sq-errmsg").html("");
+                    $(".sq-errmsg").removeClass("alert alert-warning")
+                    event.preventDefault();
+                    $('.processing').show();
+                    paymentForm.requestCardNonce();
+                });
+
+                // If there is a cookie value for a nonce we'll erase it. Arriving on this page
+                // with a cookie means the transaction has been handled by RedirectForPayment 
+                // so we clear it.
+                if ($.Cookie!=null && $.Cookie("nonce") != "") {
+                    $.Cookie("nonce","");
+                }
+            },
+
+            toTitleCase : toTitleCase
+        }
+    })();
+</script>
+
+<div>
+    <script type="text/javascript">
+    $(function () {
+        ossquare.init();
+    });
+    </script>
+
+    <div id="sq-container">
+        <div class="loading hidden">Loading&#8230;</div>
+        <h3>Pay With Credit Card</h3>
+        <label>Card Number</label>
+        <div id="sq-card-number"></div>
+        <label>CVV</label>
+        <div id="sq-cvv"></div>
+        <label>Expiration Date</label>
+        <div id="sq-expiration-date"></div>
+        <label>Postal Code</label>
+        <div id="sq-postal-code"></div>
+        <img src="/DesktopModules/i502Club/OS_Square/Themes/config/img/square-pay.png" />
+        <div class="defaultmessage">@info.GetXmlProperty("genxml/lang/genxml/textbox/message")</div>
+        <div class="sq-errmsg"></div>
+        <div class="clearfix"></div>
+        <div id="cartactions" style="">
+            <div style="clear: both;">
+                <a href="?provider=@info.GetXmlProperty("genxml/hidden/ctrl")" id="cmdOS_Square" class="paybutton primarybutton">@info.GetXmlProperty("genxml/lang/genxml/textbox/buttontext")</a>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+</div>
