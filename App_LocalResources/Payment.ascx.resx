@@ -177,4 +177,19 @@
   <data name="SandBoxMode.Text" xml:space="preserve">
     <value>Sand Box Mode</value>
   </data>
+  <data name="SquareCCNumber.Text" xml:space="preserve">
+    <value>Card Number</value>
+  </data>
+  <data name="SquareCVV.Text" xml:space="preserve">
+    <value>CVV</value>
+  </data>
+  <data name="SquareExpirationDate.Text" xml:space="preserve">
+    <value>Expiration Date</value>
+  </data>
+  <data name="SquarePaymentFormTitle.Text" xml:space="preserve">
+    <value>Pay with Credit Card</value>
+  </data>
+  <data name="SquarePostalCode.Text" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
 </root>

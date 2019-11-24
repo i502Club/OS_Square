@@ -148,10 +148,10 @@
     <value>Failed Return Display</value>
   </data>
   <data name="OS_Squaresettings.Text" xml:space="preserve">
-    <value>OS_Square Settings</value>
+    <value>OS_Square 設定</value>
   </data>
   <data name="processoptions.Text" xml:space="preserve">
-    <value>Process Options</value>
+    <value>処理オプション</value>
   </data>
   <data name="returndisplay.Text" xml:space="preserve">
     <value>Successful Return Display</value>
@@ -173,5 +173,8 @@
   </data>
   <data name="ApplicationId.Text" xml:space="preserve">
     <value>アプリケーションID</value>
+  </data>
+  <data name="SandBoxMode.Text" xml:space="preserve">
+    <value>サンドボックスモード</value>
   </data>
 </root>

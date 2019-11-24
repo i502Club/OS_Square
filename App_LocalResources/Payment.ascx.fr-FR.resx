@@ -144,4 +144,22 @@
   <data name="Payment.ApplicationId" xml:space="preserve">
     <value>Id de l’application</value>
   </data>
+  <data name="SandBoxMode.Text" xml:space="preserve">
+    <value>Mode Bac à Sable</value>
+  </data>
+  <data name="SquareCCNumber.Text" xml:space="preserve">
+    <value>Numéro de Carte</value>
+  </data>
+  <data name="SquareCVV.Text" xml:space="preserve">
+    <value>CVV</value>
+  </data>
+  <data name="SquareExpirationDate.Text" xml:space="preserve">
+    <value>Date d'Expiration</value>
+  </data>
+  <data name="SquarePaymentFormTitle.Text" xml:space="preserve">
+    <value>Payez Avec Une Carte de Crédit</value>
+  </data>
+  <data name="SquarePostalCode.Text" xml:space="preserve">
+    <value>Code Postal</value>
+  </data>
 </root>
