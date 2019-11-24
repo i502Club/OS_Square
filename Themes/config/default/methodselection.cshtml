@@ -12,7 +12,17 @@
 @{
     var info = (NBrightInfo)Model.List.First();
 }
-<script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
+
+@{ 
+    var sandboxmode = info.GetXmlPropertyBool("genxml/checkbox/sandboxmode");
+}
+@if(sandboxmode){
+<script type="text/javascript" src="https://js.squareupsandbox.com/v2/paymentform"></script>
+}
+else {
+ <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>   
+}
+
 <script type="text/javascript" src="/DesktopModules/i502Club/OS_Square/themes/config/js/jquery.cookie.min.js"></script>
 <link rel="stylesheet" href="/DesktopModules/i502Club/OS_Square/themes/config/css/ossquare.css">
 
@@ -21,71 +31,71 @@
         applicationId: '@info.GetXmlProperty("genxml/textbox/applicationid", true)',
         inputClass: 'sq-input',
         cardNumber: {
-            elementId: 'sq-card-number',
+    elementId: 'sq-card-number',
             placeholder: '•••• •••• •••• ••••'
         },
         cvv: {
-            elementId: 'sq-cvv',
+    elementId: 'sq-cvv',
             placeholder: 'CVV'
         },
         expirationDate: {
-            elementId: 'sq-expiration-date',
+    elementId: 'sq-expiration-date',
             placeholder: 'MM/YY'
         },
         postalCode: {
-            elementId: 'sq-postal-code'
+    elementId: 'sq-postal-code'
         },
         callbacks: {
-            cardNonceResponseReceived: function (errors, nonce, cardData) {
-                if (errors) {
-                    // handle errors
-                    errors.forEach(function (error) {
-                        console.log(error.message);
+    cardNonceResponseReceived: function (errors, nonce, cardData) {
+            if (errors) {
+                // handle errors
+                errors.forEach(function (error) {
+                    console.log(error.message);
                         $(".sq-errmsg").addClass("alert alert-warning");
                         $(".sq-errmsg").append(ossquare.toTitleCase(error.message) + "<br />");
-                    });
+                });
                     $(".processing").hide();
-                    return false;
-                } else {
+                return false;
+            } else {
 
-                    // Setting a short lived cookie to pass the nonce. It gets removed when the 
-                    // Square.Connect assembly finishes a charge and the user gets redirected.
-                    var homeUrl = location.origin;
-                    Cookies.set('nonce', nonce, { expires: 1/24, path: '/', domain: homeUrl.replace(location.protocol, "").replace("//", "").replace("/", "") });
+                // Setting a short lived cookie to pass the nonce. It gets removed when the 
+                // Square.Connect assembly finishes a charge and the user gets redirected.
+                var homeUrl = location.origin;
+                Cookies.set('nonce', nonce, { expires: 1/24, path: '/', domain: homeUrl.replace(location.protocol, "").replace("//", "").replace("/", "") });
 
-                    location.href = "?provider=@info.GetXmlProperty("genxml/hidden/ctrl")";
-                }
+                location.href = "?provider=@info.GetXmlProperty("genxml/hidden/ctrl")";
+            }
 
-            },
+        },
             unsupportedBrowserDetected: function () {
                 // Alert the buyer that their browser is not supported
                 $(".sq-errmsg").addClass("alert alert-warning");
                 $(".sq-errmsg").append("Browser not supported<br />");
-            },
+        },
             inputEventReceived: function (inputEvent) {
-                switch (inputEvent.eventType) {
-                    case 'focusClassAdded':
-                        // Handle as desired
-                        break;
-                    case 'focusClassRemoved':
-                        // Handle as desired
-                        break;
-                    case 'errorClassAdded':
-                        // Handle as desired
-                        break;
-                    case 'errorClassRemoved':
-                        // Handle as desired
-                        break;
-                    case 'cardBrandChanged':
-                        // Handle as desired
-                        break;
-                    case 'postalCodeChanged':
-                        // Handle as desired
-                        break;
-                }
+            switch (inputEvent.eventType) {
+                case 'focusClassAdded':
+                    // Handle as desired
+                    break;
+                case 'focusClassRemoved':
+                    // Handle as desired
+                    break;
+                case 'errorClassAdded':
+                    // Handle as desired
+                    break;
+                case 'errorClassRemoved':
+                    // Handle as desired
+                    break;
+                case 'cardBrandChanged':
+                    // Handle as desired
+                    break;
+                case 'postalCodeChanged':
+                    // Handle as desired
+                    break;
             }
         }
-    });
+    }
+});
 
     var ossquare = (function () {
 
@@ -133,14 +143,14 @@
 
     <div id="sq-container">
         <div class="loading hidden">Loading&#8230;</div>
-        <h3>Pay With Credit Card</h3>
-        <label>Card Number</label>
+        <h3>@ResourceKey("Payment.SquarePaymentFormTitle")</h3>
+        <label>@ResourceKey("Payment.SquareCCNumber")</label>
         <div id="sq-card-number"></div>
-        <label>CVV</label>
+        <label>@ResourceKey("Payment.SquareCVV")</label>
         <div id="sq-cvv"></div>
-        <label>Expiration Date</label>
+        <label>@ResourceKey("Payment.SquareExpirationDate")</label>
         <div id="sq-expiration-date"></div>
-        <label>Postal Code</label>
+        <label>@ResourceKey("Payment.SquarePostalCode")</label>
         <div id="sq-postal-code"></div>
         <img src="/DesktopModules/i502Club/OS_Square/Themes/config/img/square-pay.png" />
         <div class="defaultmessage">@info.GetXmlProperty("genxml/lang/genxml/textbox/message")</div>
