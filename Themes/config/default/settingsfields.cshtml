@@ -146,6 +146,14 @@ var info = (NBrightInfo)Model.List.First();
                 </div>
             </div>
         </div>
+        <div class="form-group">
+                <label class="col-sm-2 control-label">@ResourceKey("Payment.SandBoxMode")</label>
+                <div class="col-sm-5">
+                    <div class="dnnFormItem">
+                        @CheckBox(info, "genxml/checkbox/sandboxmode", ResourceKey("Payment.SandBoxMode", info.Lang).ToString())
+                    </div>
+                </div>
+            </div>
         <hr />
         <div class="form-group">
             <label class="col-sm-2 control-label"></label>
