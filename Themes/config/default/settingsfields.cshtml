@@ -126,9 +126,13 @@ var info = (NBrightInfo)Model.List.First();
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Location Name</label>
-            <div class="col-sm-3">
-                @TextBox(info, "genxml/textbox/locationname", "class='form-control'", "")
+            <div class="col-sm-5">
+                @TextBox(info, "genxml/textbox/locationname", "class='form-control' style='max-width:265px'", "")
+                <label for="locationname" class="dnnBoxLabel">
+                    @ResourceKey("Settings.LocationNameLabel")
+                </label>
             </div>
+            
         </div>
     </div>
     <div class="row">
@@ -150,7 +154,7 @@ var info = (NBrightInfo)Model.List.First();
                 <label class="col-sm-2 control-label">@ResourceKey("Payment.SandBoxMode")</label>
                 <div class="col-sm-5">
                     <div class="dnnFormItem">
-                        @CheckBox(info, "genxml/checkbox/sandboxmode", ResourceKey("Payment.SandBoxMode", info.Lang).ToString())
+                        @CheckBox(info, "genxml/checkbox/sandboxmode", ResourceKey("Settings.sandboxmode", info.Lang).ToString())
                     </div>
                 </div>
             </div>
