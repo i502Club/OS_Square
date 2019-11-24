@@ -67,7 +67,7 @@ namespace OS_Square
             var amount = NewMoney(orderTotal, currencyCode);
 
             var _paymentsApi = new PaymentsApi(_config);
-            var body = new CreatePaymentRequest(AmountMoney: amount, IdempotencyKey: uuid,  SourceId: nonce, LocationId: _locationId);
+            var body = new CreatePaymentRequest(AmountMoney: amount, IdempotencyKey: uuid,  SourceId: nonce, LocationId: _locationId, ReferenceId: orderData.OrderNumber );
             
             var response = _paymentsApi.CreatePayment(body);
 
