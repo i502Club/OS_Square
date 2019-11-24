@@ -11,6 +11,28 @@ namespace OS_Square
 {
     public class ProviderUtils
     {
+        readonly static Square.Connect.Client.Configuration _config;
+        readonly static string _locationId;
+
+        static ProviderUtils() {
+            var settings = ProviderUtils.GetProviderSettings();
+            var accessToken = NBrightCore.common.Security.Decrypt(PortalController.Instance.GetCurrentPortalSettings().GUID.ToString(), settings.GetXmlProperty("genxml/textbox/accesstoken"));
+            var sandboxmode = settings.GetXmlPropertyBool("genxml/checkbox/sandboxmode");
+            var url = "https://connect.squareupsandbox.com";
+            if (sandboxmode)
+            {
+                url = "https://connect.squareupsandbox.com";
+            }
+            _config = new Square.Connect.Client.Configuration(new Square.Connect.Client.ApiClient(url))
+            {
+                AccessToken = accessToken
+            };
+            // Below requires the settings field to be using the @TextBox token with the encrypted param set to true.
+            var squareLocationName = settings.GetXmlProperty("genxml/textbox/locationname");
+
+            // Get the default location or an exact name match as specified in the plugin settings
+            _locationId = GetLocationId(squareLocationName);
+        }
         public static NBrightInfo GetProviderSettings()
         {
             var objCtrl = new NBrightBuyController();
@@ -18,16 +40,9 @@ namespace OS_Square
             return info;
         }
         
-        public static ChargeResponse GetChargeResponse(OrderData orderData, string nonce)
+        public static CreatePaymentResponse GetChargeResponse(OrderData orderData, string nonce)
         {
             var settings = ProviderUtils.GetProviderSettings();
-
-            // Below requires the settings field to be using the @TextBox token with the encrypted param set to true.
-            var accessToken = NBrightCore.common.Security.Decrypt(PortalController.Instance.GetCurrentPortalSettings().GUID.ToString(), settings.GetXmlProperty("genxml/textbox/accesstoken"));
-            var squareLocationName = settings.GetXmlProperty("genxml/textbox/locationname");
-
-            // Get the default location or an exact name match as specified in the plugin settings
-            var locationId = GetLocationId(accessToken, squareLocationName);
 
             // Every payment you process must have a unique idempotency key.
             // If you're unsure whether a particular payment succeeded, you can reattempt
@@ -51,22 +66,20 @@ namespace OS_Square
             var orderTotal = (int)((appliedtotal - alreadypaid) * currencyFactor);
             var amount = NewMoney(orderTotal, currencyCode);
 
-            var _transactionApi = new TransactionApi();
-
-            var body = new ChargeRequest(AmountMoney: amount, IdempotencyKey: uuid, CardNonce: nonce);
-
-            // TODO: Consider adding try catch with a delayed re-charge using the nonce..??
-            var response = _transactionApi.Charge(accessToken, locationId, body);
+            var _paymentsApi = new PaymentsApi(_config);
+            var body = new CreatePaymentRequest(AmountMoney: amount, IdempotencyKey: uuid,  SourceId: nonce, LocationId: _locationId);
+            
+            var response = _paymentsApi.CreatePayment(body);
 
             return response;
         }
 
-        private static string GetLocationId(string accessToken, string squareLocationName)
+        private static string GetLocationId(string squareLocationName)
         {
-            //Get Square Account Locations            
-            LocationApi _locationApi = new LocationApi();
 
-            var locationList = _locationApi.ListLocations(accessToken);
+            LocationsApi _locationApi = new LocationsApi(_config);
+            
+            var locationList = _locationApi.ListLocations();
 
             if (locationList == null || locationList.Locations.Count < 1)
             {
@@ -91,7 +104,8 @@ namespace OS_Square
 
         public static Money NewMoney(int amount, string currency)
         {
-            return new Money(amount, Money.ToCurrencyEnum(currency));
+            //return new Money(amount, Money.ToCurrencyEnum(currency));
+            return new Money(amount, currency);
         }
 
         public static string NewIdempotencyKey()
