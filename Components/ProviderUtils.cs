@@ -66,8 +66,12 @@ namespace OS_Square
             var orderTotal = (int)((appliedtotal - alreadypaid) * currencyFactor);
             var amount = NewMoney(orderTotal, currencyCode);
 
+            // Creating Payment Request
+            // NOTE: OS Order Id is passed in both the reference_id & note field
+            // because the reference_id is not visible in the ui but can be found via the 
+            // transactions api.
             var _paymentsApi = new PaymentsApi(_config);
-            var body = new CreatePaymentRequest(AmountMoney: amount, IdempotencyKey: uuid,  SourceId: nonce, LocationId: _locationId, ReferenceId: orderData.OrderNumber );
+            var body = new CreatePaymentRequest(AmountMoney: amount, IdempotencyKey: uuid,  SourceId: nonce, LocationId: _locationId, ReferenceId: orderData.OrderNumber, Note: orderData.OrderNumber );
             
             var response = _paymentsApi.CreatePayment(body);
 
