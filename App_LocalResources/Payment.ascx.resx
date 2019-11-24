@@ -174,4 +174,7 @@
   <data name="ApplicationId.Text" xml:space="preserve">
     <value>Application Id</value>
   </data>
+  <data name="SandBoxMode.Text" xml:space="preserve">
+    <value>Sand Box Mode</value>
+  </data>
 </root>
