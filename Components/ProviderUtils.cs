@@ -17,20 +17,12 @@ namespace OS_Square
         static ProviderUtils() {
             var settings = ProviderUtils.GetProviderSettings();
             var accessToken = NBrightCore.common.Security.Decrypt(PortalController.Instance.GetCurrentPortalSettings().GUID.ToString(), settings.GetXmlProperty("genxml/textbox/accesstoken"));
-            var sandboxmode = settings.GetXmlPropertyBool("genxml/checkbox/sandboxmode");
-            var url = "https://connect.squareupsandbox.com";
-            if (sandboxmode)
-            {
-                url = "https://connect.squareupsandbox.com";
-            }
-            _config = new Square.Connect.Client.Configuration(new Square.Connect.Client.ApiClient(url))
-            {
-                AccessToken = accessToken
-            };
-            // Below requires the settings field to be using the @TextBox token with the encrypted param set to true.
-            var squareLocationName = settings.GetXmlProperty("genxml/textbox/locationname");
+            var url = settings.GetXmlPropertyBool("genxml/checkbox/sandboxmode") == true ? "https://connect.squareupsandbox.com" : "https://connect.squareupsandbox.com";
+
+            _config = new Square.Connect.Client.Configuration(new Square.Connect.Client.ApiClient(url)){ AccessToken = accessToken };
 
             // Get the default location or an exact name match as specified in the plugin settings
+            var squareLocationName = settings.GetXmlProperty("genxml/textbox/locationname");
             _locationId = GetLocationId(squareLocationName);
         }
         public static NBrightInfo GetProviderSettings()
@@ -65,13 +57,16 @@ namespace OS_Square
 
             var orderTotal = (int)((appliedtotal - alreadypaid) * currencyFactor);
             var amount = NewMoney(orderTotal, currencyCode);
+            
+            var storename = StoreSettings.Current.SettingsInfo.GetXmlProperty("genxml/textbox/storename");
+            var note = storename + " Order Number: " + orderData.OrderNumber;
 
             // Creating Payment Request
             // NOTE: OS Order Id is passed in both the reference_id & note field
             // because the reference_id is not visible in the ui but can be found via the 
             // transactions api.
             var _paymentsApi = new PaymentsApi(_config);
-            var body = new CreatePaymentRequest(AmountMoney: amount, IdempotencyKey: uuid,  SourceId: nonce, LocationId: _locationId, ReferenceId: orderData.OrderNumber, Note: orderData.OrderNumber );
+            var body = new CreatePaymentRequest(AmountMoney: amount, IdempotencyKey: uuid,  SourceId: nonce, LocationId: _locationId, ReferenceId: orderData.OrderNumber, Note: note );
             
             var response = _paymentsApi.CreatePayment(body);
 
