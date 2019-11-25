@@ -1,52 +1,52 @@
-﻿@media only screen and (min-width : 450px) {
-    #sq-container{width:300px;}
-    #sq-container h3 {white-space:nowrap;}
+﻿#sq-container {
+    max-width:290px;
 }
 
-#sq-container #sq-errmsg {margin:1em;}
+#sq-container a.paybutton {
+    width: 120px;
+}
 
-/*Square Form Styles */
+@media only screen and (min-width: 410px) {
+    #sq-container h3, #sq-container div.defaultmessage {
+        white-space: nowrap;
+    }
+}
+
+.third {
+    float: left;
+    width: calc((100% - 32px) / 3);
+    padding: 0;
+    margin: 0 16px 16px 0;
+}
+
+.third:last-of-type {
+    margin-right: 0;
+}
+
+/* Define how SqPaymentForm iframes should look */
 .sq-input {
-    border: 1px solid rgb(223, 223, 223);
-    outline-offset: -2px;
-    margin-bottom: 5px;
-}
-
-.sq-input--focus {
-    /* how your inputs should appear when they have focus */
-    outline: 5px auto rgb(59, 153, 252);
-}
-
-.sq-input--error {
-    /* how your inputs should appear when invalid */
-    outline: 5px auto rgb(255, 97, 97);
-}
-
-/* Default buttons */
-.paybutton {
-    background: #1AA8E3;
-    color: #FFFFFF;
-}
-
-.paybutton:hover {
-    background: #23BAF5;
-    color: #FFFFFF;
-}
-
-.paybutton {
-    display: inline-block;
-    font-weight: bold;
-    line-height: 35px;
-    padding: 0 10px;
-    margin: 10px 10px 10px 0;
-    text-align: center;
-    width: 45%;
-    border: medium none;
-    text-decoration: none;
+    height: 56px;
     box-sizing: border-box;
-    cursor: pointer;
+    border: 1px solid #E0E2E3;
+    background-color: white;
+    border-radius: 6px;
+    display: inline-block;
+    -webkit-transition: border-color .2s ease-in-out;
+    -moz-transition: border-color .2s ease-in-out;
+    -ms-transition: border-color .2s ease-in-out;
+    transition: border-color .2s ease-in-out;
 }
 
-.paybutton:hover {
-    text-decoration: none;
+/* Define how SqPaymentForm iframes should look when they have focus */
+.sq-input--focus {
+    border: 1px solid #4A90E2;
+}
+
+/* Define how SqPaymentForm iframes should look when they contain invalid values */
+.sq-input--error {
+    border: 1px solid #E02F2F;
+}
+
+#sq-card-number {
+    margin-bottom: 16px;
 }

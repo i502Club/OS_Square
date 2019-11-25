@@ -30,20 +30,28 @@ else {
     var paymentForm = new SqPaymentForm({
         applicationId: '@info.GetXmlProperty("genxml/textbox/applicationid", true)',
         inputClass: 'sq-input',
+        inputStyles: [{
+           fontSize: '16px',
+           lineHeight: '24px',
+           padding: '16px',
+           placeholderColor: '#a0a0a0',
+           backgroundColor: 'transparent',
+       }],
         cardNumber: {
     elementId: 'sq-card-number',
             placeholder: '•••• •••• •••• ••••'
         },
         cvv: {
     elementId: 'sq-cvv',
-            placeholder: 'CVV'
+            placeholder: '@ResourceKey("Payment.SquareCVV")'
         },
         expirationDate: {
     elementId: 'sq-expiration-date',
-            placeholder: 'MM/YY'
+            placeholder: '@ResourceKey("Payment.SquareExpirationDate")'
         },
         postalCode: {
-    elementId: 'sq-postal-code'
+            elementId: 'sq-postal-code',
+            placeholder: '@ResourceKey("Payment.SquarePostalCode")'
         },
         callbacks: {
     cardNonceResponseReceived: function (errors, nonce, cardData) {
@@ -146,12 +154,10 @@ else {
         <h3>@ResourceKey("Payment.SquarePaymentFormTitle")</h3>
         <label>@ResourceKey("Payment.SquareCCNumber")</label>
         <div id="sq-card-number"></div>
-        <label>@ResourceKey("Payment.SquareCVV")</label>
-        <div id="sq-cvv"></div>
-        <label>@ResourceKey("Payment.SquareExpirationDate")</label>
-        <div id="sq-expiration-date"></div>
-        <label>@ResourceKey("Payment.SquarePostalCode")</label>
-        <div id="sq-postal-code"></div>
+        <div id="sq-cvv" class="third"></div>
+        <div id="sq-expiration-date" class="third"></div>
+        <div id="sq-postal-code" class="third"></div>
+        <div class="clearfix"></div>
         <img src="/DesktopModules/i502Club/OS_Square/Themes/config/img/square-pay.png" />
         <div class="defaultmessage">@info.GetXmlProperty("genxml/lang/genxml/textbox/message")</div>
         <div class="sq-errmsg"></div>
