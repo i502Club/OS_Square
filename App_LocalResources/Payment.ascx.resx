@@ -184,12 +184,12 @@
     <value>CVV</value>
   </data>
   <data name="SquareExpirationDate.Text" xml:space="preserve">
-    <value>Expiration Date</value>
+    <value>MM/YY</value>
   </data>
   <data name="SquarePaymentFormTitle.Text" xml:space="preserve">
     <value>Pay with Credit Card</value>
   </data>
   <data name="SquarePostalCode.Text" xml:space="preserve">
-    <value>Postal Code</value>
+    <value>Zip</value>
   </data>
 </root>

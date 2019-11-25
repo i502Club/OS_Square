@@ -154,7 +154,7 @@
     <value>CVV</value>
   </data>
   <data name="SquareExpirationDate.Text" xml:space="preserve">
-    <value>Date d'Expiration</value>
+    <value>MM/YY</value>
   </data>
   <data name="SquarePaymentFormTitle.Text" xml:space="preserve">
     <value>Payez Avec Une Carte de Crédit</value>
