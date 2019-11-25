@@ -14,9 +14,13 @@ for this reason the license and release notes are inlined in the dnn manifest.
 <div class="License">
 	<h3>About OS Square</h3>
 	<p class="Owner">
-		<b>Version 1.0.0</b><br /><br />
+		<b>Version 2.0.0</b><br /><br />
 	</p>
 	<p>Payment provider module for Open Store to enable Square Credit Card Payments.</p><br />
+	<h4>Version 2.0.0</h4>
+	<ul>	
+		<li>Updated for Square.Connect v 2.25</li>
+	</ul>
 	<h4>Version 1.0.0</h4>
 	<ul>	
 		<li>Initial release</li>

@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
-		<package name="OS_Square" type="Module" version="1.0.0">
+		<package name="OS_Square" type="Module" version="2.0.0">
 			<friendlyName>OS_Square</friendlyName>
 			<description>OS_Square is a Square payment provider for Open Store</description>
       <iconFile>~/desktopmodules/i502Club/OS_Square/themes/config/img/icon_extension.png</iconFile>
@@ -15,8 +15,11 @@
         THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
         YOU MAY NOT REDISTRIBUTE, NOT VIEW THE SOURCE CODE, NOT COPY THIS SOFTWARE.
       </license>
-      <releaseNotes>v1.0.0
-      * Initial release
+      <releaseNotes>
+        v2.0.0
+        * Updated for Square.Connect v. 2.25
+        v1.0.0
+        * Initial release
       </releaseNotes>
       <azureCompatible>true</azureCompatible>
       <dependencies>
