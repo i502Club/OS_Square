@@ -46,6 +46,14 @@
               <path>bin</path>
               <name>Square.Connect.dll</name>s
             </assembly>
+            <assembly>
+              <path>bin</path>
+              <name>System.ComponentModel.Annotations.dll</name>s
+            </assembly>
+            <assembly>
+              <path>bin</path>
+              <name>RestSharp.dll</name>s
+            </assembly>
 					</assemblies>
 				</component>
 				<component type="File">
