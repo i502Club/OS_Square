@@ -55,6 +55,10 @@
             </assembly>
             <assembly>
               <path>bin</path>
+              <name>System.ComponentModel.DataAnnotations.dll</name>s
+            </assembly>
+            <assembly>
+              <path>bin</path>
               <name>RestSharp.dll</name>s
             </assembly>
 					</assemblies>

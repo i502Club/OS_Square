@@ -55,6 +55,7 @@
 
     <Copy SourceFiles="$(MSBuildDnnBinPath)\Square.Connect.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     <Copy SourceFiles="$(MSBuildDnnBinPath)\System.ComponentModel.Annotations.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\System.ComponentModel.DataAnnotations.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     <Copy SourceFiles="$(MSBuildDnnBinPath)\RestSharp.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
 
     <!-- create the INSTALL NBrightBuy_Resource.ZIP file -->
