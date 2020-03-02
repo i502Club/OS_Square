@@ -9,6 +9,8 @@
 
 @{
     var info = (NBrightInfo)Model.List.First();
+    var orderNumber = info.GetXmlProperty("genxml/ordernumber");
+    var eid = orderNumber.Substring(6);
 }
 
 @if (Model.GetSettingBool("carttitle"))
@@ -43,7 +45,7 @@
     @if (UserController.Instance.GetCurrentUserInfo().UserID > 0)
     {
         <div class="formrow">
-            <a class="primarybutton" href="/tabid/@(Model.GetSetting("ordermanagertab"))/eid/@(info.ItemID)">@ResourceKey("CartView.ViewOrder")</a>
+            <a class="primarybutton" href="/tabid/@(Model.GetSetting("ordermanagertab"))/eid/@eid">@ResourceKey("CartView.ViewOrder")</a>
         </div>
     }
     else
