@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
-		<package name="OS_Square" type="Module" version="2.0.1">
+		<package name="OS_Square" type="Module" version="2.0.2">
 			<friendlyName>OS_Square</friendlyName>
 			<description>OS_Square is a Square payment provider for Open Store</description>
       <iconFile>~/desktopmodules/i502Club/OS_Square/themes/config/img/icon_extension.png</iconFile>
@@ -16,9 +16,12 @@
         YOU MAY NOT REDISTRIBUTE, NOT VIEW THE SOURCE CODE, NOT COPY THIS SOFTWARE.
       </license>
       <releaseNotes>
-        &lt;h1&gt;OS_Square Payment Provider v2.0.1&lt;/h1&gt; 
+        &lt;h1&gt;OS_Square Payment Provider v2.0.2&lt;/h1&gt; 
         &lt;p&gt;This DNN module installs an Open Store payment provider for Square. It includes the 
         libraries to support Square.Connect v.2.25. Requires a Square Developer account with API credentials.&lt;/p&gt;&lt;br&gt;
+        &lt;h1&gt;v2.0.2&lt;/h1&gt;
+        &lt;ul&gt; &lt;li&gt;Fix view order links&lt;/li&gt; &lt;/ul&gt;
+        &lt;hr&gt;
         &lt;h1&gt;v2.0.1&lt;/h1&gt;
         &lt;ul&gt; &lt;li&gt;Build changes&lt;/li&gt; &lt;li&gt;Optimize form width&lt;/li&gt; &lt;/ul&gt;
         &lt;hr&gt;
