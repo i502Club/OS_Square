@@ -16,9 +16,12 @@
         YOU MAY NOT REDISTRIBUTE, NOT VIEW THE SOURCE CODE, NOT COPY THIS SOFTWARE.
       </license>
       <releaseNotes>
-        &lt;h1&gt;OS_Square Payment Provider v2.0.1&lt;/h1&gt; 
+        &lt;h1&gt;OS_Square Payment Provider v2.0.2&lt;/h1&gt; 
         &lt;p&gt;This DNN module installs an Open Store payment provider for Square. It includes the 
         libraries to support Square.Connect v.2.25. Requires a Square Developer account with API credentials.&lt;/p&gt;&lt;br&gt;
+        &lt;h1&gt;v2.0.2&lt;/h1&gt;
+        &lt;ul&gt; &lt;li&gt;Make view order link show order details&lt;/li&gt;  &lt;/ul&gt;
+        &lt;hr&gt;
         &lt;h1&gt;v2.0.1&lt;/h1&gt;
         &lt;ul&gt; &lt;li&gt;Build changes&lt;/li&gt; &lt;li&gt;Optimize form width&lt;/li&gt; &lt;/ul&gt;
         &lt;hr&gt;
