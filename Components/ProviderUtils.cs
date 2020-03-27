@@ -76,9 +76,10 @@ namespace OS_Square
 
             var objEventLog = new EventLogController();
             var portalSettings = PortalController.Instance.GetCurrentPortalSettings();
-            objEventLog.AddLog("OS_Square message", "ApiKey : " + _config.Password, portalSettings, UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
-            objEventLog.AddLog("OS_Square message", "AccessToken : " + _config.AccessToken, portalSettings, UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
-            objEventLog.AddLog("OS_Square message", "Header : " + Newtonsoft.Json.JsonConvert.SerializeObject(_config.ApiClient.Configuration.DefaultHeader), portalSettings, UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
+            var userId = UserController.Instance.GetCurrentUserInfo().UserID;
+            objEventLog.AddLog("OS_Square message", "ApiKey : " + _config.Password, portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
+            objEventLog.AddLog("OS_Square message", "AccessToken : " + _config.AccessToken, portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
+            objEventLog.AddLog("OS_Square message", "Header : " + Newtonsoft.Json.JsonConvert.SerializeObject(_config.ApiClient.Configuration.DefaultHeader), portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
 
             
            
@@ -89,10 +90,20 @@ namespace OS_Square
             // transactions api.
             var _paymentsApi = new PaymentsApi(_config);
             var body = new CreatePaymentRequest(AmountMoney: amount, IdempotencyKey: uuid,  SourceId: nonce, LocationId: _locationId, ReferenceId: orderData.OrderNumber, Note: note );
-            
-            var response = _paymentsApi.CreatePayment(body);
+            try
+            {
+                var response = _paymentsApi.CreatePayment(body);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                objEventLog.AddLog("OS_Square err ", "Message : " + ex.Message, portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
 
-            return response;
+                orderData.AddAuditMessage(ex.Message, "notes", UserController.Instance.GetCurrentUserInfo().Username, "False");
+                //throw;
+            }
+
+            return null;
         }
 
         private static string GetLocationId(string squareLocationName)
