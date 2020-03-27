@@ -6,6 +6,8 @@ using Square.Connect.Api;
 using Square.Connect.Model;
 using System;
 using System.Linq;
+using DotNetNuke.Services.Log.EventLog;
+using DotNetNuke.Entities.Users;
 
 namespace OS_Square
 {
@@ -17,13 +19,21 @@ namespace OS_Square
         static ProviderUtils() {
             var settings = ProviderUtils.GetProviderSettings();
             var accessToken = NBrightCore.common.Security.Decrypt(PortalController.Instance.GetCurrentPortalSettings().GUID.ToString(), settings.GetXmlProperty("genxml/textbox/accesstoken"));
-            var url = settings.GetXmlPropertyBool("genxml/checkbox/sandboxmode") == true ? "https://connect.squareupsandbox.com" : "https://connect.squareupsandbox.com";
+            var url = settings.GetXmlPropertyBool("genxml/checkbox/sandboxmode") == true ? "https://connect.squareupsandbox.com" : "https://connect.squareup.com";
 
             _config = new Square.Connect.Client.Configuration(new Square.Connect.Client.ApiClient(url)){ AccessToken = accessToken };
 
             // Get the default location or an exact name match as specified in the plugin settings
             var squareLocationName = settings.GetXmlProperty("genxml/textbox/locationname");
+
+            var objEventLog = new EventLogController();
+            objEventLog.AddLog("OS_Square Message", "Location Name : " + squareLocationName, PortalController.Instance.GetCurrentPortalSettings(), UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
+            objEventLog.AddLog("OS_Square Message", "Url : " + url, PortalController.Instance.GetCurrentPortalSettings(), UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
+            objEventLog.AddLog("OS_Square accessToken", "accessToken : " + accessToken, PortalController.Instance.GetCurrentPortalSettings(), UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
+
+
             _locationId = GetLocationId(squareLocationName);
+            //_locationId = "7D721KQTNCYWF";
         }
         public static NBrightInfo GetProviderSettings()
         {
@@ -40,6 +50,8 @@ namespace OS_Square
             // If you're unsure whether a particular payment succeeded, you can reattempt
             // it with the same idempotency key without worrying about double charging
             var uuid = NewIdempotencyKey();
+
+            // TODO: save idempotency??
 
             var appliedtotal = orderData.PurchaseInfo.GetXmlPropertyDouble("genxml/appliedtotal");
             var alreadypaid = orderData.PurchaseInfo.GetXmlPropertyDouble("genxml/alreadypaid");
@@ -60,6 +72,16 @@ namespace OS_Square
             
             var storename = StoreSettings.Current.SettingsInfo.GetXmlProperty("genxml/textbox/storename");
             var note = storename + " Order Number: " + orderData.OrderNumber;
+
+
+            var objEventLog = new EventLogController();
+            var portalSettings = PortalController.Instance.GetCurrentPortalSettings();
+            objEventLog.AddLog("OS_Square message", "ApiKey : " + _config.Password, portalSettings, UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
+            objEventLog.AddLog("OS_Square message", "AccessToken : " + _config.AccessToken, portalSettings, UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
+            objEventLog.AddLog("OS_Square message", "Header : " + Newtonsoft.Json.JsonConvert.SerializeObject(_config.ApiClient.Configuration.DefaultHeader), portalSettings, UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
+
+            
+           
 
             // Creating Payment Request
             // NOTE: OS Order Id is passed in both the reference_id & note field
