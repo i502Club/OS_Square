@@ -3,11 +3,11 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("OS_Square")]
-[assembly: AssemblyDescription("Square payment provider for Open Store ecommerce module")]
+[assembly: AssemblyDescription("Square payment provider for DNN Open Store ecommerce module")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("i502.club")]
 [assembly: AssemblyProduct("OS_Square")]
-[assembly: AssemblyCopyright("Copyright © 2019")]
+[assembly: AssemblyCopyright("Copyright © 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
