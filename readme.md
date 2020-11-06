@@ -4,7 +4,7 @@ OS_Square
 ## Getting Started
 This is a payment provider plugin for Open Store. It will enable any 
 DNN 9.4+ site running Open Store to accept CC payments into their  
-&copy;Square account.  You must have a valid &copySquare account and 
+&copy;Square account.  You must have a valid &copy;Square account and 
 a developers api key for this provider to work.
 
 ### Installing
@@ -19,7 +19,6 @@ a developers api key for this provider to work.
 The gateway should now be ready.
 
 ### Dependencies
-Libraries that get installed with the module:
 
  Square.Connect 2.25.0.0
  System.ComponentModel.Annotations 4.2.1.0
@@ -31,7 +30,7 @@ Libraries that get installed with the module:
  Microsoft.Extensions.DependencyInjection.Abstractions 2.1.1.0
 
 
-NOTE: This install includes a version of Square.Connect dll and 3 supporting dlls 
+NOTE This install includes a version of Square.Connect dll and 3 supporting dlls 
 which the installer should place in the bin directory.  Please back up your bin directory as 
 a precaution in the event there is some unforeseen incompatability. This module is the 
 evolution of an earlier version(v1) that worked with the NBrightBuy system before it's 
@@ -40,7 +39,6 @@ library in preparation for core support.  v2.0.3 is the 1st public version.
  
 
  ### Development
- ===========
 
  1. Install the module into your development enviroment.
  2. Clone the repo to your /DesktopModules/i502Club/ directory.
@@ -62,5 +60,5 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 * All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & the [OpenStore]( https://github.com/openstore-ecommerce/OpenStore)  projects.
 
  ## Contribute
- * Contributions are awesome.  You can create an issue or better yet....  Submit your PR 
- and help make the plugin work better for other users.
+ * Contributions are awesome.  You can create an issue or better yet...  Submit a pull request
+ to help make the plugin work better.
