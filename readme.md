@@ -20,14 +20,14 @@ The gateway should now be ready.
 
 ### Dependencies
 
- Square.Connect 2.25.0.0
- System.ComponentModel.Annotations 4.2.1.0
- System.ComponentModel.DataAnnotations 4.0.0.0
- RestSharp 106.3.1.0
+ * Square.Connect 2.25.0.0
+ * System.ComponentModel.Annotations 4.2.1.0
+ * System.ComponentModel.DataAnnotations 4.0.0.0
+ * RestSharp 106.3.1.0
 
- DotNetNuke.DependencyInjection 9.7.1.0
- Microsoft.Extensions.DependencyInjection 2.1.1.0
- Microsoft.Extensions.DependencyInjection.Abstractions 2.1.1.0
+ * DotNetNuke.DependencyInjection 9.7.1.0
+ * Microsoft.Extensions.DependencyInjection 2.1.1.0
+ * Microsoft.Extensions.DependencyInjection.Abstractions 2.1.1.0
 
 
 NOTE The installation includes a version of Square.Connect dll and 3 supporting dlls 
