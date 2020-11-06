@@ -1,23 +1,28 @@
 ﻿<h3>OS Square</h3>
 <p class="Contributor">
-	i502.club <br />
+	i502 Club<br />
 	<a href="mailto:info@i502.club">info@i502.club</a><br />
-	<a href="https://www.i502.club">https://www.i502.club</a><br />
+	<a href="https://www.i502.club">www.i502.club</a><br />
 </p>
 <hr/>
+
 <div class="License">
 	<h3>About OS Square</h3>
 	<p class="Owner">
 		<b>Version 2.0.3</b><br /><br />
 	</p>
-	<p>Payment provider module for Open Store to enable &copy;Square Credit Card Payments.</p><br />
+	<p>Payment provider module for Open Store to enable Square Credit Card Payments.</p><br />
 	<h4>Version 2.0.3</h4>
 	<ul>
-		<li>Add verbose logging</li>
-		<li>update manifest dependencies</li>
-		<li>Remove inlined license and release notes</li>
-		<li>Remove comment relics</li>
-		<li>Add DependencyInjection support refs and StartUp.cs</li>
+		<li>Add Dependency Injection support</li>
+		<li>Add ref to DotNetNuke.Abstractions</li>
+		<li>documentation mods</li>
+		<li>add verbose logging messages</li>
+	</ul>
+	<hr />
+	<h4>Version 2.0.2</h4>
+	<ul>
+		<li>Make view order link show order details</li>
 	</ul>
 	<hr />
 	<h4>Version 2.0.1</h4>

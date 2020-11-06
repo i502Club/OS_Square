@@ -4,7 +4,8 @@ OS_Square
 ## Getting Started
 This is a payment provider plugin for Open Store. It will enable any 
 DNN 9.4+ site running Open Store to accept CC payments into their  
-&copy;Square account.
+&copy;Square account.  You must have a valid &copy;Square account and 
+a [developers](https://developer.squareup.com/) api key for this provider to work.
 
 ### Installing
 1. Install into DNN as a normal module.  Ensure that your DNN Open Store installation is using 
@@ -18,29 +19,27 @@ DNN 9.4+ site running Open Store to accept CC payments into their
 The gateway should now be ready.
 
 ### Dependencies
-Libraries that get installed with the module:
 
- Square.Connect 2.25.0.0
- System.ComponentModel.Annotations 4.2.1.0
- System.ComponentModel.DataAnnotations 4.0.0.0
- RestSharp 106.3.1.0
+ * Square.Connect 2.25.0.0
+ * System.ComponentModel.Annotations 4.2.1.0
+ * System.ComponentModel.DataAnnotations 4.0.0.0
+ * RestSharp 106.3.1.0
 
- DotNetNuke.DependecncyInjection 9.7.1.0
- Microsoft.Extensions.DependencyInjection 2.1.1.0
- Microsoft.Extensions.DependencyInjection.Abstractions 2.1.1.0
+ * DotNetNuke.DependencyInjection 9.7.1.0
+ * Microsoft.Extensions.DependencyInjection 2.1.1.0
+ * Microsoft.Extensions.DependencyInjection.Abstractions 2.1.1.0
 
 
-NOTE: This install includes a version of Square.Connect dll and 3 supporting dlls 
-which the installer should place in the bin directory.  Please back up your bin directory as 
+NOTE The installation includes a version of Square.Connect dll and 3 supporting dlls 
+which the installer places in the bin directory.  Please back up your bin directory as 
 a precaution in the event there is some unforeseen incompatability. This module is the 
-evolution of an earlier version that worked with the NBrightBuy system before it's 
-change to Open Store.  The project also references the DotNetNuke.DependencyInjection 
-library in preperation for core support.  Version 2.0.1 is the 1st public version 
-which is based on internal work that began when Open Store was known as NBStore. 
+evolution of an earlier version(v1) that worked with the NBStore system before it's name 
+change to OpenStore.  The project also references the DotNetNuke.DependencyInjection 
+library in preparation for core support.  The v1 version of this plugin began when 
+OpenStore was called NBStore. We bumped it's major version to v2 when OpenStore rolled out.
  
 
- Development
- ===========
+ ### Development
 
  1. Install the module into your development enviroment.
  2. Clone the repo to your /DesktopModules/i502Club/ directory.
@@ -53,10 +52,14 @@ which is based on internal work that began when Open Store was known as NBStore.
  5. You should be able to compile and attach the debugger at this point.
 
  ## Authors
- i502 Club
+ i502 Club, Reggae
 
  ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
 
 ## Acknowledgments
-* All the contributors to DNN & the Open Store projects.
+* All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & [OpenStore]( https://github.com/openstore-ecommerce/OpenStore) 
+
+ ## Contribute
+ * Contributions are awesome.  You can create an issue or better yet...  Submit a pull request
+ to help make the plugin work better.
