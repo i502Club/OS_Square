@@ -5,7 +5,7 @@ OS_Square
 This is a payment provider plugin for Open Store. It will enable any 
 DNN 9.4+ site running Open Store to accept CC payments into their  
 &copy;Square account.  You must have a valid &copy;Square account and 
-a developers api key for this provider to work.
+a [developers](https://developer.squareup.com/) api key for this provider to work.
 
 ### Installing
 1. Install into DNN as a normal module.  Ensure that your DNN Open Store installation is using 
@@ -30,12 +30,13 @@ The gateway should now be ready.
  Microsoft.Extensions.DependencyInjection.Abstractions 2.1.1.0
 
 
-NOTE This install includes a version of Square.Connect dll and 3 supporting dlls 
-which the installer should place in the bin directory.  Please back up your bin directory as 
+NOTE The installation includes a version of Square.Connect dll and 3 supporting dlls 
+which the installer places in the bin directory.  Please back up your bin directory as 
 a precaution in the event there is some unforeseen incompatability. This module is the 
 evolution of an earlier version(v1) that worked with the NBrightBuy system before it's 
 change to Open Store.  The project also references the DotNetNuke.DependencyInjection 
-library in preparation for core support.  v2.0.3 is the 1st public version. 
+library in preparation for core support.  The v1 version of this plugin began when 
+OpenStore was called NBStore. We bumped it's major version to v2 when OpenStore rolled out.
  
 
  ### Development
@@ -57,7 +58,7 @@ library in preparation for core support.  v2.0.3 is the 1st public version.
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
 
 ## Acknowledgments
-* All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & the [OpenStore]( https://github.com/openstore-ecommerce/OpenStore)  projects.
+* All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & [OpenStore]( https://github.com/openstore-ecommerce/OpenStore) 
 
  ## Contribute
  * Contributions are awesome.  You can create an issue or better yet...  Submit a pull request
