@@ -25,7 +25,7 @@
       <InstallInclude Include="**\*.resx" Exclude="packages\**;Themes\**;" />
       <InstallInclude Include="**\*.aspx" Exclude="packages\**;Themes\**;" />
       <InstallInclude Include="**\*.js" Exclude="packages\**;Themes\**;" />
-     <InstallInclude Include="**\*.xml" Exclude="**\menuplugin.xml;Themes\**;**\bin\**;**\obj\**;**\_ReSharper*\**;**\.git\**;packages\**;Installation\**;Providers\**\bin\**;Providers\**\obj\**;Skins\**;" />
+      <InstallInclude Include="**\*.xml" Exclude="**\menuplugin.xml;Themes\**;**\bin\**;**\obj\**;**\_ReSharper*\**;**\.git\**;packages\**;Installation\**;Providers\**\bin\**;Providers\**\obj\**;Skins\**;" />
       <InstallInclude Include="**\*.txt"  Exclude="Themes\**;**\obj\**;**\_ReSharper*\**;packages\**;**\.git\**;Installation\**;" />
       <InstallInclude Include="**\Docs\**" Exclude="packages\**;Themes\**;Thumbs.db;" />
       <InstallInclude Include="**\Themes\**\**\*.*" Exclude="**\**\menuplugin.xml;**\**\Thumbs.db;" />
@@ -34,6 +34,14 @@
     
     <CreateItem Include="$(AssemblyName).dnn">
       <Output TaskParameter="Include" ItemName="PackageManifestFiles" />
+    </CreateItem>
+
+    <CreateItem Include="$(MSBuildProjectDirectory)\License.txt">
+      <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
+    </CreateItem>
+
+    <CreateItem Include="$(MSBuildProjectDirectory)\ReleaseNotes.txt">
+      <Output TaskParameter="Include" ItemName="PackageTxtFiles" />
     </CreateItem>
 
     <CreateItem Include="Installation\*.sqldataprovider">
@@ -52,11 +60,17 @@
     <Copy SourceFiles="@(PackageManifestFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
     <Copy SourceFiles="@(PackageTxtFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
     <Copy SourceFiles="@(PluginFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
-
+    
+    <!-- Square Connect support libs-->
     <Copy SourceFiles="$(MSBuildDnnBinPath)\Square.Connect.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     <Copy SourceFiles="$(MSBuildDnnBinPath)\System.ComponentModel.Annotations.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     <Copy SourceFiles="$(MSBuildDnnBinPath)\System.ComponentModel.DataAnnotations.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     <Copy SourceFiles="$(MSBuildDnnBinPath)\RestSharp.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    
+    <!-- DotNetNue Dependency Injection support libs -->
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\DotNetNuke.DependencyInjection.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\Microsoft.Extensions.DependencyInjection.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\Microsoft.Extensions.DependencyInjection.Abstractions.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
 
     <!-- create the INSTALL NBrightBuy_Resource.ZIP file -->
     <Copy SourceFiles="@(InstallInclude)" DestinationFolder="$(MSBuildProjectDirectory)\ResourcesZip\%(RecursiveDir)" />
