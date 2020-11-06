@@ -12,7 +12,9 @@ namespace OS_Square
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            throw new NotImplementedException();
+            //Not used but prepares this module for DI
+
+            //services.AddScoped<IPaymentService, SquarePaymentService>;
         }
     }
 }
