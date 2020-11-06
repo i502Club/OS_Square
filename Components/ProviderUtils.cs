@@ -8,6 +8,7 @@ using System;
 using System.Linq;
 using DotNetNuke.Services.Log.EventLog;
 using DotNetNuke.Entities.Users;
+using DotNetNuke.Abstractions.Portals;
 
 namespace OS_Square
 {
@@ -15,12 +16,12 @@ namespace OS_Square
     {
         readonly static Square.Connect.Client.Configuration _config;
         readonly static string _locationId;
-        private readonly static Boolean _verboseLogging = false;
+        private readonly static Boolean _verboseLogging = false; // This should only be switched to true in test environments
         private static readonly EventLogController _objEventLog;
 
         static ProviderUtils() {
             var settings = ProviderUtils.GetProviderSettings();
-            var accessToken = NBrightCore.common.Security.Decrypt(PortalController.Instance.GetCurrentPortalSettings().GUID.ToString(), settings.GetXmlProperty("genxml/textbox/accesstoken"));
+            var accessToken = NBrightCore.common.Security.Decrypt(PortalController.Instance.GetCurrentSettings().GUID.ToString(), settings.GetXmlProperty("genxml/textbox/accesstoken"));
             var url = settings.GetXmlPropertyBool("genxml/checkbox/sandboxmode") == true ? "https://connect.squareupsandbox.com" : "https://connect.squareup.com";
             var debugmode = settings.GetXmlPropertyBool("genxml/checkbox/debugmode");
 
@@ -28,16 +29,15 @@ namespace OS_Square
 
             // Get the default location or an exact name match as specified in the plugin settings
             var squareLocationName = settings.GetXmlProperty("genxml/textbox/locationname");
-            _objEventLog = new EventLogController();
+            
             if (_verboseLogging) {
-                //var objEventLog = new EventLogController();
-                _objEventLog.AddLog("OS_Square Message", "Location Name : " + squareLocationName, PortalController.Instance.GetCurrentPortalSettings(), UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
-                _objEventLog.AddLog("OS_Square Message", "Url : " + url, PortalController.Instance.GetCurrentPortalSettings(), UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
-                _objEventLog.AddLog("OS_Square accessToken", "accessToken : " + accessToken, PortalController.Instance.GetCurrentPortalSettings(), UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
+                _objEventLog = new EventLogController();
+                _objEventLog.AddLog("OS_Square Message", "Location Name : " + squareLocationName, PortalController.Instance.GetCurrentSettings(), UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
+                _objEventLog.AddLog("OS_Square Message", "Url : " + url, PortalController.Instance.GetCurrentSettings(), UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
+                _objEventLog.AddLog("OS_Square accessToken", "accessToken : " + accessToken, PortalController.Instance.GetCurrentSettings(), UserController.Instance.GetCurrentUserInfo().UserID, EventLogController.EventLogType.ADMIN_ALERT);
             }
 
             _locationId = GetLocationId(squareLocationName);
-            //_locationId = "7D721KQTNCYWF";
         }
         public static NBrightInfo GetProviderSettings()
         {
@@ -49,14 +49,15 @@ namespace OS_Square
         public static CreatePaymentResponse GetChargeResponse(OrderData orderData, string nonce)
         {
             var settings = ProviderUtils.GetProviderSettings();
-            var portalSettings = PortalController.Instance.GetCurrentPortalSettings();
+            var portalSettings = PortalController.Instance.GetCurrentSettings();
             var userId = UserController.Instance.GetCurrentUserInfo().UserID;
             // Every payment you process must have a unique idempotency key.
             // If you're unsure whether a particular payment succeeded, you can reattempt
             // it with the same idempotency key without worrying about double charging
-            var uuid = NewIdempotencyKey();
+            var uuid = IdempotencyKey();
 
-            // TODO: save idempotency??
+            // TODO: improve stability by saving idempotency for possible 
+            //       resubmission in the event of a network failure
 
             var appliedtotal = orderData.PurchaseInfo.GetXmlPropertyDouble("genxml/appliedtotal");
             var alreadypaid = orderData.PurchaseInfo.GetXmlPropertyDouble("genxml/alreadypaid");
@@ -73,15 +74,15 @@ namespace OS_Square
             }
 
             var orderTotal = (int)((appliedtotal - alreadypaid) * currencyFactor);
-            var amount = NewMoney(orderTotal, currencyCode);
-            
+            var amount = new Money(orderTotal, currencyCode);
+
             var storename = StoreSettings.Current.SettingsInfo.GetXmlProperty("genxml/textbox/storename");
             var note = storename + " Order Number: " + orderData.OrderNumber;
 
             if (_verboseLogging) {
-                _objEventLog.AddLog("OS_Square message", "ApiKey : " + _config.Password, portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
-                _objEventLog.AddLog("OS_Square message", "AccessToken : " + _config.AccessToken, portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
-                _objEventLog.AddLog("OS_Square message", "Header : " + Newtonsoft.Json.JsonConvert.SerializeObject(_config.ApiClient.Configuration.DefaultHeader), portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
+                _objEventLog.AddLog("OS_Square message", "ApiKey : " + _config.Password, (IPortalSettings)portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
+                _objEventLog.AddLog("OS_Square message", "AccessToken : " + _config.AccessToken, (IPortalSettings)portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
+                _objEventLog.AddLog("OS_Square message", "Header : " + Newtonsoft.Json.JsonConvert.SerializeObject(_config.ApiClient.Configuration.DefaultHeader), (IPortalSettings)portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
             }
 
             // Creating Payment Request
@@ -97,7 +98,8 @@ namespace OS_Square
             }
             catch (Exception ex)
             {
-                _objEventLog.AddLog("OS_Square err ", "Message : " + ex.Message, portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
+                //TODO: detect network failures.  Wait. Resubmit.
+                _objEventLog.AddLog("OS_Square err ", "Message : " + ex.Message, (IPortalSettings)portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
                 orderData.AddAuditMessage(ex.Message, "notes", UserController.Instance.GetCurrentUserInfo().Username, "False");
                 //throw;
             }
@@ -123,7 +125,7 @@ namespace OS_Square
             // Check if the plugin settings have an location name matching one in Square's list
             if (!string.IsNullOrWhiteSpace(squareLocationName))
             {
-                var l = locationList.Locations.Where(x => x.Name == squareLocationName).FirstOrDefault();
+                var l = locationList.Locations.Where(x => x.Name.Equals(squareLocationName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
                 if (l != null)
                 {
                     myLocation = l;
@@ -133,13 +135,7 @@ namespace OS_Square
             return myLocation.Id;
         }
 
-        public static Money NewMoney(int amount, string currency)
-        {
-            //return new Money(amount, Money.ToCurrencyEnum(currency));
-            return new Money(amount, currency);
-        }
-
-        public static string NewIdempotencyKey()
+        public static string IdempotencyKey()
         {
             return Guid.NewGuid().ToString();
         }
