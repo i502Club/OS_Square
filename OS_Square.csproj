@@ -44,6 +44,19 @@
       <HintPath>..\..\..\bin\DotNetNuke.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DotNetNuke.Abstractions">
+      <HintPath>..\..\..\bin\DotNetNuke.Abstractions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DotNetNuke.DependencyInjection, Version=9.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetNuke.DependencyInjection.9.7.1\lib\netstandard2.0\DotNetNuke.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.2.1.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="NBrightBuy">
       <HintPath>..\..\..\bin\NBrightBuy.dll</HintPath>
       <Private>False</Private>
@@ -110,6 +123,7 @@
     <Compile Include="Return.aspx.designer.cs">
       <DependentUpon>Return.aspx.cs</DependentUpon>
     </Compile>
+    <Compile Include="StartUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Installation\pluginOS_Square.xml" />
