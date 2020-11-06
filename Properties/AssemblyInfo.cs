@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("OS_Square")]
 [assembly: AssemblyDescription("Square payment provider for DNN Open Store ecommerce module")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("i502.club")]
+[assembly: AssemblyCompany("i502 Club")]
 [assembly: AssemblyProduct("OS_Square")]
 [assembly: AssemblyCopyright("Copyright © 2020")]
 [assembly: AssemblyTrademark("")]
@@ -19,4 +19,4 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("046f4169-8d4e-44f9-99fa-2250be352a70")]
 
-[assembly: AssemblyVersion("2.0.1.*")]
+[assembly: AssemblyVersion("2.0.3.*")]
