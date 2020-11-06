@@ -33,8 +33,8 @@ The gateway should now be ready.
 NOTE The installation includes a version of Square.Connect dll and 3 supporting dlls 
 which the installer places in the bin directory.  Please back up your bin directory as 
 a precaution in the event there is some unforeseen incompatability. This module is the 
-evolution of an earlier version(v1) that worked with the NBrightBuy system before it's 
-change to Open Store.  The project also references the DotNetNuke.DependencyInjection 
+evolution of an earlier version(v1) that worked with the NBStore system before it's name 
+change to OpenStore.  The project also references the DotNetNuke.DependencyInjection 
 library in preparation for core support.  The v1 version of this plugin began when 
 OpenStore was called NBStore. We bumped it's major version to v2 when OpenStore rolled out.
  
