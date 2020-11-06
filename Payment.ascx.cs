@@ -7,11 +7,6 @@ using System.Web.UI.WebControls;
 namespace OS_Square
 {
 
-    /// -----------------------------------------------------------------------------
-    /// <summary>
-    /// The ViewNBrightGen class displays the content
-    /// </summary>
-    /// -----------------------------------------------------------------------------
     public partial class OS_SquarePayment : NBrightBuyAdminBase
     {
 
@@ -41,7 +36,6 @@ namespace OS_Square
         }
 
         #endregion
-
 
     }
 
