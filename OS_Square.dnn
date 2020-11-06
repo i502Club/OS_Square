@@ -18,6 +18,7 @@
         <dependency type="CoreVersion">09.04.00</dependency>
         <dependency type="managedPackage" version="4.0.2">OS_ProductView</dependency>
         <dependency type="managedPackage" version="8.5.2">NBrightTemplateSys</dependency>
+        
         <!-- Square dependencies -->
 				<dependency type="type">Square.Connect</dependency>
 				<dependency type="type">System.ComponentModel.Annotations</dependency>
