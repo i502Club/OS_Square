@@ -1,14 +1,10 @@
 ﻿<h3>OS Square</h3>
 <p class="Contributor">
-	i502.club <br />
+	i502 Club<br />
 	<a href="mailto:info@i502.club">info@i502.club</a><br />
 	<a href="https://www.i502.club">https://www.i502.club</a><br />
 </p>
 <hr/>
-
-<!-- Please note this project will not compile if you try to use external release notes
-for this reason the license and release notes are inlined in the dnn manifest.
--->
 
 <div class="License">
 	<h3>About OS Square</h3>
