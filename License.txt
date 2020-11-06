@@ -1,17 +1,10 @@
 ﻿<div class="License">
 	<h3>License</h3>
 	<p class="Owner">
-		i502.club  <a href=http://www.i502.club>http://www.i502.club</a></br>
-		Copyright (c) 2019</br>	
-		by i502.club</br>
+		i502 Club  <a href=http://www.i502.club>http://www.i502.club</a></br>
+		Copyright (c) 2020</br>	
+		by i502 Club</br>
 	</p>
-
-	<!-- Please note this project will not compile if you try to use external release notes
-for this reason the license and release notes are inlined in the dnn manifest.
--->
-
-
-
     <p>
         Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
         documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
