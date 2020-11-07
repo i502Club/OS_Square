@@ -20,7 +20,9 @@ a [developers](https://developer.squareup.com/) api key for this provider to wor
 5. The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
 
-The gateway should now be ready.
+The gateway should now be ready and your customers can purchase securely with the Square 
+payment form.
+![OpenStore Back Office Admin Panel](assets/images/cc_form.png)
 
 ### Dependencies
 
@@ -62,7 +64,7 @@ This project first released publicly at v2.0.4-rc
  5. You should be able to compile and attach the debugger at this point.
 
  ## Authors
- i502 Club, [Reggae](https://www.youtube.com/watch?v=lEmLqH2gTd8)
+ i502 Club(https://www.i502.club), [Reggae](https://www.youtube.com/watch?v=lEmLqH2gTd8)
 
  ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
