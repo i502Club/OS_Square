@@ -1,5 +1,5 @@
 # OS_Square
-DNN OpenStore payment provider plugin
+A DNN OpenStore payment provider plugin
 
 ## Getting Started
 This is a payment provider plugin for [OpenStore](https://www.openstore-ecommerce.com/en-gb/OpenStore)![OpenStore Ecommerce](assets/images/os_logo.png). It will enable any 
@@ -31,7 +31,7 @@ payment form in your OpenStore.
 ---
 
 ### Development
-  1. Install the module into your development enviroment.
+ 1. Install the module into your development enviroment.
  2. Clone the repo to your /DesktopModules/i502Club/ directory.
  2. Your development environment IIS server must bind your DNN site to localhost 
 	otherwise the payment form & Square.Connect assembly will not work using the sandbox.  
