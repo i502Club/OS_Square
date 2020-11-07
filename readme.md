@@ -1,14 +1,14 @@
-# Project Title
-OS_Square
+# OS_Square
+DNN OpenStore payment provider plugin
 
 ## Getting Started
-This is a payment provider plugin for Open Store. It will enable any 
-DNN 9.4+ site running Open Store to accept CC payments into their Square account.  You must 
+This is a payment provider plugin for [OpenStore](https://www.openstore-ecommerce.com/en-gb/OpenStore)![OpenStore Ecommerce](assets/images/os_logo.png). It will enable any 
+DNN 9.4+ site running OpenStore to accept CC payments into their Square account.  You must 
 have a valid Square account and a [developers](https://developer.squareup.com/) 
 api key for this provider to work.
 
 ### Installing
-1. Install into DNN as a normal module.  Ensure that your DNN Open Store installation is using 
+1. Install into DNN as a normal module.  Ensure that your DNN OpenStore installation is using 
    at least v8.5.2 of the NBrightTemplateSys.
 
 2. Go into Open-Store BO>Admin, the "OS_Square" option should be listed.
@@ -16,8 +16,8 @@ api key for this provider to work.
 
 3. See Square's developer portal for your Application ID & API Access Token.
 
-4. Configure your Open Store Back Office plugin settings for the Square plugin with the credentials from step 3. 
-![OpenStore Back Office Admin Panel](assets/images/settings.png)
+4. Configure your OpenStore Back Office plugin settings for the Square plugin with the credentials from step 3. 
+![OS_Square Plugin Settings](assets/images/settings.png)
 
 5. The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
@@ -48,7 +48,7 @@ payment form in your OpenStore.
  * System.ComponentModel.Annotations 4.2.1.0
  * System.ComponentModel.DataAnnotations 4.0.0.0
  * RestSharp 106.3.1.0
- ---
+ 
  * DotNetNuke.DependencyInjection 9.7.1.0
  * Microsoft.Extensions.DependencyInjection 2.1.1.0
  * Microsoft.Extensions.DependencyInjection.Abstractions 2.1.1.0
@@ -68,7 +68,7 @@ Square.Connect library.  The v2 version of this plugin began when when the break
 from Square.Connect 2.25 were mitigated. First released publicly at v2.0.4-rc
  
 ## Authors
- i502 Club(https://www.i502.club)
+ [i502 Club](https://www.i502.club)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
