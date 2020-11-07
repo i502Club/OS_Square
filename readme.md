@@ -11,7 +11,7 @@ a [developers](https://developer.squareup.com/) api key for this provider to wor
 1. Install into DNN as a normal module.  Ensure that your DNN Open Store installation is using 
    at least v8.5.2 of the NBrightTemplateSys.
 2. Go into Open-Store BO>Admin, the "OS_Square" option should be listed.
-![OpenStore Back Office Admin Panel](/assets/images/plugin_installed.png)
+![OpenStore Back Office Admin Panel](assets/images/plugin_installed.png)
 
 
 3. See &copy;Square's developer portal for your Application ID & API Access Token.
