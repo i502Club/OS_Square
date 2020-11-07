@@ -9,10 +9,21 @@
 <div class="License">
 	<h3>About OS Square</h3>
 	<p class="Owner">
-		<b>Version 2.0.3</b><br /><br />
+		<b>Version 2.0.4</b><br /><br />
 	</p>
 	<p>Payment provider module for Open Store to enable Square Credit Card Payments.</p><br />
-	<h4>Version 2.0.3</h4>
+	<h4>Version 2.0.4</h4>
+	<ul>
+		<li> Add cc form img to readme</li>
+		<li>Add settings img to readme</li>
+		<li>Add OS bo settings images</li>
+		<li>add verbose logging messages</li>
+		<li>Adding removeMe.xml</li>
+		<li>Update build targets</li>
+	</ul>
+	<hr />
+
+	<h4>Version 2.0.4</h4>
 	<ul>
 		<li>Add Dependency Injection support</li>
 		<li>Add ref to DotNetNuke.Abstractions</li>
