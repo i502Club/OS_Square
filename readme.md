@@ -4,7 +4,7 @@ OS_Square
 ## Getting Started
 This is a payment provider plugin for Open Store. It will enable any 
 DNN 9.4+ site running Open Store to accept CC payments into their  
-&copy;Square account.  You must have a valid (C)Square account and 
+<span>&copy;</span>Square account.  You must have a valid <span>&copy;</span>Square account and 
 a [developers](https://developer.squareup.com/) api key for this provider to work.
 
 ### Installing
@@ -14,13 +14,13 @@ a [developers](https://developer.squareup.com/) api key for this provider to wor
 ![OpenStore Back Office Admin Panel](assets/images/plugin_installed.png)
 
 
-3. See (C)Square's developer portal for your Application ID & API Access Token.
-4. Configure your Open Store Back Office plugin settings for the (C)Square plugin with the credentials from step 3. 
+3. See <span>&copy;</span><span>&copy;</span>Square's developer portal for your Application ID & API Access Token.
+4. Configure your Open Store Back Office plugin settings for the <span>&copy;</span>Square plugin with the credentials from step 3. 
 ![OpenStore Back Office Admin Panel](assets/images/settings.png)
 5. The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
 
-The gateway should now be ready and your customers can purchase securely with the (C)Square 
+The gateway should now be ready and your customers can purchase securely with the <span>&copy;</span>Square 
 payment form.
 ![OpenStore Back Office Admin Panel](assets/images/cc_form.png)
 
@@ -57,8 +57,8 @@ First released publicly at v2.0.4-rc
  2. Clone the repo to your /DesktopModules/i502Club/ directory.
  2. Your development environment IIS server must bind your DNN site to localhost 
 	otherwise the payment form & Square.Connect assembly will not work using the sandbox.  
- 3. See Square's developer portal for your Application ID, API Access Token and test cc card information.
- 4. Configure your settings for the Square plugin.  You will need an Application ID and API Access Token.
+ 3. See <span>&copy;</span>Square's developer portal for your Application ID, API Access Token and test cc card information.
+ 4. Configure your settings for the <span>&copy;</span>Square plugin.  You will need an Application ID and API Access Token.
 	The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
  5. You should be able to compile and atstach the debugger at this point.
