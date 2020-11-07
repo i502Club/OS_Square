@@ -10,19 +10,37 @@ api key for this provider to work.
 ### Installing
 1. Install into DNN as a normal module.  Ensure that your DNN Open Store installation is using 
    at least v8.5.2 of the NBrightTemplateSys.
+
 2. Go into Open-Store BO>Admin, the "OS_Square" option should be listed.
 ![OpenStore Back Office Admin Panel](assets/images/plugin_installed.png)
 
-
 3. See Square's developer portal for your Application ID & API Access Token.
+
 4. Configure your Open Store Back Office plugin settings for the Square plugin with the credentials from step 3. 
 ![OpenStore Back Office Admin Panel](assets/images/settings.png)
+
 5. The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
+---
 
-The gateway should now be ready and your customers can purchase securely with the Square 
-payment form.
-![OpenStore Back Office Admin Panel](assets/images/cc_form.png)
+*Congratulations*! The gateway should now be ready and your customers can purchase securely with the Square 
+payment form in your OpenStore.
+
+![Square payment form](assets/images/cc_form.png)
+
+---
+
+### Development
+  1. Install the module into your development enviroment.
+ 2. Clone the repo to your /DesktopModules/i502Club/ directory.
+ 2. Your development environment IIS server must bind your DNN site to localhost 
+	otherwise the payment form & Square.Connect assembly will not work using the sandbox.  
+ 3. See Square's developer portal for your Application ID, API Access Token and test cc card information.
+ 4. Configure your settings for the Square plugin.  You will need an Application ID and API Access Token.
+	The provider by default uses the first location returned from your account but if you have more 
+	than one location you can optionally specify it by Name in the Location input.
+ 5. You should be able to compile and atstach the debugger at this point.
+
 
 ### Dependencies
 
@@ -44,21 +62,13 @@ before installation.* The project also references DotNetNuke.DependencyInjection
 in preparation for .net core support.
 
 ## History
-This module is the evolution of an earlier version that worked with the NBStore system before it's name change to OpenStore. It was also depending on an earlier version of the Square.Connect library.  The v2 version of this plugin began when when the breaking changes from Square.Connect 2.25 were mitigated. First released publicly at v2.0.4-rc
+This module is the evolution of an earlier version that worked with the NBStore system 
+before it's name change to OpenStore. It was also depending on an earlier version of the 
+Square.Connect library.  The v2 version of this plugin began when when the breaking changes 
+from Square.Connect 2.25 were mitigated. First released publicly at v2.0.4-rc
  
-### Development
-  1. Install the module into your development enviroment.
- 2. Clone the repo to your /DesktopModules/i502Club/ directory.
- 2. Your development environment IIS server must bind your DNN site to localhost 
-	otherwise the payment form & Square.Connect assembly will not work using the sandbox.  
- 3. See Square's developer portal for your Application ID, API Access Token and test cc card information.
- 4. Configure your settings for the Square plugin.  You will need an Application ID and API Access Token.
-	The provider by default uses the first location returned from your account but if you have more 
-	than one location you can optionally specify it by Name in the Location input.
- 5. You should be able to compile and atstach the debugger at this point.
-
 ## Authors
- i502 Club(https://www.i502.club), [Reggae](https://www.youtube.com/watch?v=lEmLqH2gTd8)
+ i502 Club(https://www.i502.club)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
