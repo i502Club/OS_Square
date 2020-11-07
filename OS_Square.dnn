@@ -48,19 +48,19 @@
 						</assembly>
             <assembly>
               <path>bin</path>
-              <name>Square.Connect.dll</name>s
+              <name>Square.Connect.dll</name>
             </assembly>
             <assembly>
               <path>bin</path>
-              <name>System.ComponentModel.Annotations.dll</name>s
+              <name>System.ComponentModel.Annotations.dll</name>
             </assembly>
             <assembly>
               <path>bin</path>
-              <name>System.ComponentModel.DataAnnotations.dll</name>s
+              <name>System.ComponentModel.DataAnnotations.dll</name>
             </assembly>
             <assembly>
               <path>bin</path>
-              <name>RestSharp.dll</name>s
+              <name>RestSharp.dll</name>
             </assembly>
 					</assemblies>
 				</component>
