@@ -11,7 +11,10 @@ a [developers](https://developer.squareup.com/) api key for this provider to wor
 1. Install into DNN as a normal module.  Ensure that your DNN Open Store installation is using 
    at least v8.5.2 of the NBrightTemplateSys.
 2. Go into Open-Store BO>Admin, the "OS_Square" option should be listed.
-3. See Square's developer portal for your Application ID & API Access Token.
+![OpenStore Back Office Admin Panel](/assets/images/plugin-installed.png)
+
+
+3. See &copy;Square's developer portal for your Application ID & API Access Token.
 4. Configure your settings for the Square plugin with the credentials from step 3. 
 5. The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
@@ -32,12 +35,17 @@ The gateway should now be ready.
 
 NOTE The installation includes a version of Square.Connect dll and 3 supporting dlls 
 which the installer places in the bin directory.  The installation also installs the 
-DotNetNuke.DependencyInjection & 2 supporting libraries.  Please back up your bin directory 
-as a precaution. There is no sql provider and therefore no db changes happening with this module 
-install.  This module is the evolution of an earlier version(v1) that worked with the NBStore system before it's name 
-change to OpenStore.  The project also references the DotNetNuke.DependencyInjection 
-library in preparation for core support.  The v1 version of this plugin began when 
-OpenStore was called NBStore. We bumped it's major version to v2 when OpenStore rolled out.
+DotNetNuke.DependencyInjection & 2 supporting libraries.  There is no sql provider with 
+this module install but it is still best to *back up your db & file system as a precaution 
+before installation.* The project also references DotNetNuke.DependencyInjection library 
+in preparation for .net core support.  
+
+## History
+This module is the evolution of an earlier version that worked with 
+the NBStore system before it's name change to OpenStore. It was also depending 
+on an earlier version of the Square.Connect library.  The v2 version of this 
+plugin began when when the breaking changes from Square.Connect 2.25 were mitigated. 
+This project first released publicly at v2.0.4-rc
  
 
  ### Development
@@ -53,7 +61,7 @@ OpenStore was called NBStore. We bumped it's major version to v2 when OpenStore 
  5. You should be able to compile and attach the debugger at this point.
 
  ## Authors
- i502 Club, Reggae
+ i502 Club, [Reggae](https://www.youtube.com/watch?v=lEmLqH2gTd8)
 
  ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
