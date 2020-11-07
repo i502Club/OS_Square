@@ -31,9 +31,10 @@ The gateway should now be ready.
 
 
 NOTE The installation includes a version of Square.Connect dll and 3 supporting dlls 
-which the installer places in the bin directory.  Please back up your bin directory as 
-a precaution in the event there is some unforeseen incompatability. This module is the 
-evolution of an earlier version(v1) that worked with the NBStore system before it's name 
+which the installer places in the bin directory.  The installation also installs the 
+DotNetNuke.DependencyInjection & 2 supporting libraries.  Please back up your bin directory 
+as a precaution. There is no sql provider and therefore no db changes happening with this module 
+install.  This module is the evolution of an earlier version(v1) that worked with the NBStore system before it's name 
 change to OpenStore.  The project also references the DotNetNuke.DependencyInjection 
 library in preparation for core support.  The v1 version of this plugin began when 
 OpenStore was called NBStore. We bumped it's major version to v2 when OpenStore rolled out.
@@ -61,5 +62,5 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 * All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & [OpenStore]( https://github.com/openstore-ecommerce/OpenStore) 
 
  ## Contribute
- * Contributions are awesome.  You can create an issue or better yet...  Submit a pull request
+ * Contributions are awesome.  You can create an issue or submit a pull request
  to help make the plugin work better.
