@@ -4,7 +4,7 @@ OS_Square
 ## Getting Started
 This is a payment provider plugin for Open Store. It will enable any 
 DNN 9.4+ site running Open Store to accept CC payments into their  
-&copy;Square account.  You must have a valid &copy;Square account and 
+&copy;Square account.  You must have a valid (C)Square account and 
 a [developers](https://developer.squareup.com/) api key for this provider to work.
 
 ### Installing
@@ -14,19 +14,19 @@ a [developers](https://developer.squareup.com/) api key for this provider to wor
 ![OpenStore Back Office Admin Panel](assets/images/plugin_installed.png)
 
 
-3. See &copy;Square's developer portal for your Application ID & API Access Token.
-4. Configure your Open Store Back Office plugin settings for the Square plugin with the credentials from step 3. 
+3. See (C)Square's developer portal for your Application ID & API Access Token.
+4. Configure your Open Store Back Office plugin settings for the (C)Square plugin with the credentials from step 3. 
 ![OpenStore Back Office Admin Panel](assets/images/settings.png)
 5. The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
 
-The gateway should now be ready and your customers can purchase securely with the Square 
+The gateway should now be ready and your customers can purchase securely with the (C)Square 
 payment form.
 ![OpenStore Back Office Admin Panel](assets/images/cc_form.png)
 
 ### Dependencies
 
- * Square.Connect 2.25.0.0
+ * Square.Connect 2.25
  * System.ComponentModel.Annotations 4.2.1.0
  * System.ComponentModel.DataAnnotations 4.0.0.0
  * RestSharp 106.3.1.0
@@ -41,14 +41,14 @@ which the installer places in the bin directory.  The installation also installs
 DotNetNuke.DependencyInjection & 2 supporting libraries.  There is no sql provider with 
 this module install but it is still best to *back up both your db & file system as a precaution 
 before installation.* The project also references DotNetNuke.DependencyInjection library 
-in preparation for .net core support.  
+in preparation for .net core support.
 
 ## History
 This module is the evolution of an earlier version that worked with 
 the NBStore system before it's name change to OpenStore. It was also depending 
 on an earlier version of the Square.Connect library.  The v2 version of this 
 plugin began when when the breaking changes from Square.Connect 2.25 were mitigated. 
-This project first released publicly at v2.0.4-rc
+First released publicly at v2.0.4-rc
  
 
  ### Development
@@ -61,7 +61,7 @@ This project first released publicly at v2.0.4-rc
  4. Configure your settings for the Square plugin.  You will need an Application ID and API Access Token.
 	The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
- 5. You should be able to compile and attach the debugger at this point.
+ 5. You should be able to compile and atstach the debugger at this point.
 
  ## Authors
  i502 Club(https://www.i502.club), [Reggae](https://www.youtube.com/watch?v=lEmLqH2gTd8)
