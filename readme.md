@@ -15,7 +15,8 @@ a [developers](https://developer.squareup.com/) api key for this provider to wor
 
 
 3. See &copy;Square's developer portal for your Application ID & API Access Token.
-4. Configure your settings for the Square plugin with the credentials from step 3. 
+4. Configure your Open Store Back Office plugin settings for the Square plugin with the credentials from step 3. 
+![OpenStore Back Office Admin Panel](assets/images/settings.png)
 5. The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
 
@@ -36,7 +37,7 @@ The gateway should now be ready.
 NOTE The installation includes a version of Square.Connect dll and 3 supporting dlls 
 which the installer places in the bin directory.  The installation also installs the 
 DotNetNuke.DependencyInjection & 2 supporting libraries.  There is no sql provider with 
-this module install but it is still best to *back up your db & file system as a precaution 
+this module install but it is still best to *back up both your db & file system as a precaution 
 before installation.* The project also references DotNetNuke.DependencyInjection library 
 in preparation for .net core support.  
 
