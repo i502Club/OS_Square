@@ -27,6 +27,7 @@ api key for this provider to work.
 
 5. Select the currency code that is relevant to your Square account.  Presently there is 
 support for USD, CAD, AUD, GBP, JPY.
+
 ![OS_Square supported currency flags](assets/images/flags_292X40.png)
 
 
@@ -34,6 +35,7 @@ support for USD, CAD, AUD, GBP, JPY.
 returned from your account via the ListLocations endpoint but if you have more than one 
 location you can optionally specify it by Name in the Location input.  *If the name 
 you entered does not match a Location Name in your Square account you will receive an error*
+
 ---
 
 *Congratulations*! The gateway should now be ready and your customers can purchase securely with the (c)Square 
@@ -66,27 +68,21 @@ payment form during your OpenStore checkout process.
  the binding redirects that enable the Square library to locate it. There is no sql 
  provider with this module install. *Please follow best practice and back up both 
  your db &  file system before installing*.
- 
- * DotNetNuke.DependencyInjection 9.7.1.0
- * Microsoft.Extensions.DependencyInjection 2.1.1.0
- * Microsoft.Extensions.DependencyInjection.Abstractions 2.1.1.0
 
-
-Note: The installation of DotNetNuke.DependencyInjection & it's 2 supporting 
+The installation of DotNetNuke.DependencyInjection & it's 2 supporting 
 libraries is in preparation for .net core support.  There is no usage of the 
 StartUp class at this time.
 
 ## History
 This module is the evolution of an earlier version that worked with the NBStore system 
-before it's name change to OpenStore. It was also depending on an earlier version of the 
-Square.Connect library.  The v2 version of this plugin began when when the breaking changes 
-from Square.Connect 2.25 were mitigated. v3 represents the migration from the deprecated 
-Square.Connect library to it's successor,  the Square library which is currently at v6.5. 
-This version 3.0.0-alpha is to allow for some testing, feedback particularly on foreign 
-currencies, and for smoke testing(i502 pun intended) for case scenarios that may have 
-been overlooked.  The plugin provides support for USD, AUD, GBP, CAD and JPY currencies.  You 
-can set your currency code from the OS Back Office.  v3.0.0-alpha is the 
-first public release.
+before it's name change to OpenStore. The v2 version of this plugin began when  
+breaking changes from Square.Connect 2.25 were mitigated. v3 represents the migration 
+from the deprecated Square.Connect library to it's successor,  the Square library 
+which is currently at v6.5. This version 3.0.0-alpha is to allow for some testing, 
+feedback particularly on foreign currencies, and for smoke testing(i502 pun intended) for 
+case scenarios that may have been overlooked.  The plugin provides support for 
+USD, AUD, GBP, CAD and JPY currencies.  You can set your currency code from the 
+OS Back Office.  v3.0.0-alpha is the first public release.
 
 
 ## Authors
