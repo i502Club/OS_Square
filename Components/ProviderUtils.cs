@@ -1,15 +1,14 @@
-﻿using DotNetNuke.Entities.Portals;
+﻿using DotNetNuke.Abstractions.Portals;
+using DotNetNuke.Entities.Portals;
+using DotNetNuke.Entities.Users;
+using DotNetNuke.Services.Log.EventLog;
 using NBrightCore.common;
 using NBrightDNN;
 using Nevoweb.DNN.NBrightBuy.Components;
+using Square;
+using Square.Models;
 using System;
 using System.Linq;
-using DotNetNuke.Services.Log.EventLog;
-using DotNetNuke.Entities.Users;
-using DotNetNuke.Abstractions.Portals;
-using Square.Models;
-using Square;
-using Square.Apis;
 
 namespace OS_Square
 {
@@ -99,12 +98,12 @@ namespace OS_Square
             }
             catch (Exception ex)
             {
-                //TODO: detect network failures.  Wait. Resubmit.
+                //TODO: detect network failures.  Wait. Resubmit with Idempotency uuid.
                 var objEventLog = new EventLogController();
                 objEventLog.AddLog("OS_Square err ", "Message : " + ex.Message, (IPortalSettings)portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
                 orderData.AddAuditMessage(ex.Message, "notes", UserController.Instance.GetCurrentUserInfo().Username, "False");
                 
-                // swallow errors that have been added to the event & audit logs
+                // swallowing errors that have been added to the event & audit logs
             }
 
             return null;
@@ -124,11 +123,9 @@ namespace OS_Square
             // Set the default location to the 1st location
             var myLocation = locationList.Locations[0];
 
-            // Check if the plugin settings have an location name matching one in Square's list
-            if (!string.IsNullOrWhiteSpace(squareLocationName))
-            {
-                myLocation = locationList.Locations.Where(x => x.Name.Equals(squareLocationName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault() ?? myLocation;
-            }
+            // Check if plugin settings have an location name that matches 
+            // a name in the Square location list
+            myLocation = !string.IsNullOrWhiteSpace(squareLocationName) ? locationList.Locations.Where(x => x.Name.Equals(squareLocationName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault() : myLocation;
 
             return myLocation.Id;
         }
