@@ -5,7 +5,7 @@ A DNN OpenStore payment provider plugin
 This is a payment provider plugin for [![Open Store](assets/images/os_logo_150X29.png)](https://www.openstore-ecommerce.com/en-gb/OpenStore). It will enable any 
 DNN 9.4+ site running OpenStore to accept CC payments into their Square account.  You must 
 have a valid Square account and a [developers](https://developer.squareup.com/) 
-api key for this provider to work.
+api key for this provider to work.  
 
 
 
@@ -25,8 +25,8 @@ api key for this provider to work.
 	than one location you can optionally specify it by Name in the Location input.
 ---
 
-*Congratulations*! The gateway should now be ready and your customers can purchase securely with the Square 
-payment form in your OpenStore.
+*Congratulations*! The gateway should now be ready and your customers can purchase securely with the (c)Square 
+payment form in your OpenStore.  From WA canna with love.
 
 ![Square payment form](assets/images/cc_form.png)
 
@@ -36,12 +36,12 @@ payment form in your OpenStore.
  1. Install the module into your development enviroment.
  2. Clone the repo to your /DesktopModules/i502Club/ directory.
  2. Your development environment IIS server must bind your DNN site to localhost 
-	otherwise the payment form & Square.Connect assembly will not work using the sandbox.  
+	otherwise the payment form & Square assembly will not work using the sandbox.  
  3. See Square's developer portal for your Application ID, API Access Token and test cc card information.
  4. Configure your settings for the Square plugin.  You will need an Application ID and API Access Token.
 	The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
- 5. You should be able to compile and atstach the debugger at this point.
+ 5. You should be able to compile and attach the debugger at this point.
 
 
 ### Dependencies
@@ -69,17 +69,18 @@ StartUp class at this time.
 This module is the evolution of an earlier version that worked with the NBStore system 
 before it's name change to OpenStore. It was also depending on an earlier version of the 
 Square.Connect library.  The v2 version of this plugin began when when the breaking changes 
-from Square.Connect 2.25 were mitigated. v3 represents the migration from the deprectated 
+from Square.Connect 2.25 were mitigated. v3 represents the migration from the deprecated 
 Square.Connect library to it's successor,  the Square library which is currently at v6.5. 
 This version 3.0.0-alpha is to allow for some testing, feedback particularly on foreign 
-currencies, and for smoking testing(i502 pun intended) for case scenarios that may have 
-been overlooked.  v3.0.0-alpha is the first public release so we apologize if it's a 
-bit mis-leading to begin at a v3.
+currencies, and for smoke testing(i502 pun intended) for case scenarios that may have 
+been overlooked.  The plugin provides support for USD, AUD, GBP, CAD and JPY currencies.  You 
+can set your currency code from the OS Back Office.  v3.0.0-alpha is the 
+first public release.
 
 
 ## Authors
 [i502 Club](https://www.i502.club)
-This project was based on the templates for OpenStore which David Lee provides for the community.
+This project was built using templates for OpenStore which David Lee has provided for the community.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
@@ -88,5 +89,5 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 * All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & [OpenStore]( https://github.com/openstore-ecommerce/OpenStore) 
 
 ## Contribute
- Contributions are awesome.  You can create an issue or submit a pull request
+ Don't bogart the code(i502 forced pun). Contributions are awesome.  You can create an issue or submit a pull request
  to help make the plugin work better.
