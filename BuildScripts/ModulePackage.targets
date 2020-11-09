@@ -61,13 +61,17 @@
     <Copy SourceFiles="@(PackageTxtFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
     <Copy SourceFiles="@(PluginFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
     
-    <!-- Square Connect support libs-->
-    <Copy SourceFiles="$(MSBuildDnnBinPath)\Square.Connect.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
-    <Copy SourceFiles="$(MSBuildDnnBinPath)\System.ComponentModel.Annotations.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
-    <Copy SourceFiles="$(MSBuildDnnBinPath)\System.ComponentModel.DataAnnotations.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
-    <Copy SourceFiles="$(MSBuildDnnBinPath)\RestSharp.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    <!-- Square library-->
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\Square.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     
-    <!-- DotNetNue Dependency Injection support libs -->
+    <!-- Create Directory for v12 of Newtonsoft.Json -->
+    <!-- Currently DNN is using v10.0.3 which wont work with the Square lib -->
+    <!-- This Copy task works with the dnn manifest config section changes that create binding 
+          redirects during the module install to enable the versions to coexist and 
+          not risk any potential issues with DNN not being compatable with v12 (it may be)-->
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\Newtonsoft.Json\v12\Newtonsoft.Json.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin\Newtonsoft.Json\v12\"/>
+
+    <!-- DotNetNuke Dependency Injection support libs -->
     <Copy SourceFiles="$(MSBuildDnnBinPath)\DotNetNuke.DependencyInjection.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     <Copy SourceFiles="$(MSBuildDnnBinPath)\Microsoft.Extensions.DependencyInjection.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     <Copy SourceFiles="$(MSBuildDnnBinPath)\Microsoft.Extensions.DependencyInjection.Abstractions.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
@@ -95,7 +99,7 @@
     <RemoveDir Directories ="$(MSBuildProjectDirectory)\ResourcesZip" />
 
     
-    <Copy SourceFiles="$(MSBuildProjectDirectory)\bin\$(AssemblyName).dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\bin\Release\$(AssemblyName).dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     <Copy SourceFiles="@(SqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package\%(RecursiveDir)" />
     <Copy SourceFiles="@(PackageManifestFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
     <Copy SourceFiles="@(PackageTxtFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
