@@ -2,10 +2,12 @@
 A DNN OpenStore payment provider plugin
 
 ## Getting Started
-This is a payment provider plugin for [OpenStore](https://www.openstore-ecommerce.com/en-gb/OpenStore)![OpenStore Ecommerce](assets/images/os_logo.png). It will enable any 
+This is a payment provider plugin for [![Open Store](assets/images/os_logo_150X29.png)](https://www.openstore-ecommerce.com/en-gb/OpenStore). It will enable any 
 DNN 9.4+ site running OpenStore to accept CC payments into their Square account.  You must 
 have a valid Square account and a [developers](https://developer.squareup.com/) 
 api key for this provider to work.
+
+
 
 ### Installing
 1. Install into DNN as a normal module.  Ensure that your DNN OpenStore installation is using 
@@ -44,31 +46,38 @@ payment form in your OpenStore.
 
 ### Dependencies
 
- * Square.Connect 2.25
- * System.ComponentModel.Annotations 4.2.1.0
- * System.ComponentModel.DataAnnotations 4.0.0.0
- * RestSharp 106.3.1.0
+ * Square v6.5.0.0
+ * NewtonSoft v12 
+ 
+ Note: Currently the DNN default install does not have a high enough 
+ version of Newtonsoft.Json for the Square lib to work. Therefore the module installation 
+ will create a bin/Newtonsoft.Json/v12 directory anbd update the web.config to include 
+ the binding redirects that enable the Square library to locate it. There is no sql 
+ provider with this module install. *Please follow best practice and back up both 
+ your db &  file system before installing*.
  
  * DotNetNuke.DependencyInjection 9.7.1.0
  * Microsoft.Extensions.DependencyInjection 2.1.1.0
  * Microsoft.Extensions.DependencyInjection.Abstractions 2.1.1.0
 
 
-NOTE The installation includes a version of Square.Connect dll and 3 supporting dlls 
-which the installer places in the bin directory.  The installation also installs the 
-DotNetNuke.DependencyInjection & 2 supporting libraries.  There is no sql provider with 
-this module install but it is still best to *back up both your db & file system as a precaution 
-before installation.* The project also references DotNetNuke.DependencyInjection library 
-in preparation for .net core support.
+Note: The installation of DotNetNuke.DependencyInjection & it's 2 supporting 
+libraries in preparation for .net core support.  There is no usage of the 
+StartUp class at this time.
 
 ## History
 This module is the evolution of an earlier version that worked with the NBStore system 
 before it's name change to OpenStore. It was also depending on an earlier version of the 
 Square.Connect library.  The v2 version of this plugin began when when the breaking changes 
-from Square.Connect 2.25 were mitigated. First released publicly at v2.0.4-rc
- 
+from Square.Connect 2.25 were mitigated. v3 represents the migration from the deprectated 
+Square.Connect library to it's successor,  the Square library which is currently at v6.5. 
+This version 3.0.0-alpha is to allow for some testing and feedback particularly on foreign currencies 
+and to allow for smoking out(pun intended) any case scenarios that could have been overlooked. 
+
+
 ## Authors
- [i502 Club](https://www.i502.club)
+[i502 Club](https://www.i502.club)
+This project was based on the template work by David Lee for OpenStore
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
