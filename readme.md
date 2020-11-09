@@ -13,22 +13,27 @@ api key for this provider to work.
 1. Install into DNN as a normal module.  Ensure that your DNN OpenStore installation is using 
    at least v8.5.2 of the NBrightTemplateSys.
 
+
 2. Go into Open-Store BO>Admin, the "OS_Square" option should be listed.
 ![OpenStore Back Office Admin Panel](assets/images/plugin_installed.png)
 
+
 3. ![Square logo](assets/images/square-logo.png)  See Square's [developers](https://developer.squareup.com/) portal for your Application ID & API Access Token.
+
 
 4. Configure your OpenStore Back Office plugin settings for the Square plugin with the credentials from step 3. 
 ![OS_Square Plugin Settings](assets/images/settings.png)
 
-4. Select the currency code that is relevant to your Square account.  Presently there is 
+
+5. Select the currency code that is relevant to your Square account.  Presently there is 
 support for USD, CAD, AUD, GBP, JPY.
 ![OS_Square supported currency flags](assets/images/flags_292X40.png)
 
-5. Optionally enter a Location Name.  The provider by default uses the first location 
+
+6. Optionally enter a Location Name.  The provider by default uses the first location 
 returned from your account via the ListLocations endpoint but if you have more than one 
 location you can optionally specify it by Name in the Location input.  *If the name 
-you entered does not match a Location Name the code you will receive an error*
+you entered does not match a Location Name in your Square account you will receive an error*
 ---
 
 *Congratulations*! The gateway should now be ready and your customers can purchase securely with the (c)Square 
