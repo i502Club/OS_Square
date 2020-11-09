@@ -26,7 +26,7 @@ api key for this provider to work.
 ---
 
 *Congratulations*! The gateway should now be ready and your customers can purchase securely with the (c)Square 
-payment form in your OpenStore.  From WA canna with love.
+payment form in your OpenStore.
 
 ![Square payment form](assets/images/cc_form.png)
 
