@@ -2,7 +2,7 @@
 A DNN OpenStore payment provider plugin
 
 ## Getting Started
-This is a payment provider plugin for [![Open Store](assets/images/os_logo_150X29.png)](https://www.openstore-ecommerce.com/en-gb/OpenStore). It will enable any 
+This is a payment provider plugin for [![OpenStore Ecommerce](assets/images/os_logo_150X29.png)](https://www.openstore-ecommerce.com/en-gb/OpenStore). It will enable any 
 DNN 9.4+ site running OpenStore to accept CC payments into their Square account.  You must 
 have a valid Square account and a [developers](https://developer.squareup.com/) 
 api key for this provider to work.  
@@ -16,17 +16,23 @@ api key for this provider to work.
 2. Go into Open-Store BO>Admin, the "OS_Square" option should be listed.
 ![OpenStore Back Office Admin Panel](assets/images/plugin_installed.png)
 
-3. See Square's developer portal for your Application ID & API Access Token.
+3. See Square's ![Square logo](assets/images/sqare-logo.png) [developers](https://developer.squareup.com/) portal for your Application ID & API Access Token.
 
 4. Configure your OpenStore Back Office plugin settings for the Square plugin with the credentials from step 3. 
 ![OS_Square Plugin Settings](assets/images/settings.png)
 
-5. The provider by default uses the first location returned from your account but if you have more 
-	than one location you can optionally specify it by Name in the Location input.
+4. Select the currency code that is relevant to your Square account.  Presently there is 
+support for USD, CAD, AUD, GBP, JPY.
+![OS_Square supported currency flags](assets/images/flags_292X40.png)
+
+5. Optionally enter a Location Name.  The provider by default uses the first location 
+returned from your account via the ListLocations endpoint but if you have more than one 
+location you can optionally specify it by Name in the Location input.  *If the name 
+you entered does not match a Location Name the code you will receive an error*
 ---
 
 *Congratulations*! The gateway should now be ready and your customers can purchase securely with the (c)Square 
-payment form in your OpenStore.
+payment form during your OpenStore checkout process.
 
 ![Square payment form](assets/images/cc_form.png)
 
@@ -51,7 +57,7 @@ payment form in your OpenStore.
  
  Note: Currently the DNN default install does not have a high enough(i502 accidental pun)
  version of Newtonsoft.Json for the Square lib to work. Therefore the module installation 
- will create a bin/Newtonsoft.Json/v12 directory anbd update the web.config to include 
+ will create a bin/Newtonsoft.Json/v12 directory and update the web.config to include 
  the binding redirects that enable the Square library to locate it. There is no sql 
  provider with this module install. *Please follow best practice and back up both 
  your db &  file system before installing*.
@@ -62,7 +68,7 @@ payment form in your OpenStore.
 
 
 Note: The installation of DotNetNuke.DependencyInjection & it's 2 supporting 
-libraries in preparation for .net core support.  There is no usage of the 
+libraries is in preparation for .net core support.  There is no usage of the 
 StartUp class at this time.
 
 ## History
@@ -79,8 +85,9 @@ first public release.
 
 
 ## Authors
-[i502 Club](https://www.i502.club)
-This project was built using templates for OpenStore which David Lee has provided for the community.
+[![OpenStore Ecommerce](assets/images/icon_extension.png)](https://www.i502.club) [i502 Club](https://www.i502.club)
+
+This project was built using templates for OpenStore which David Lee, OS's creator, has provided for the community.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
