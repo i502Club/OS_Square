@@ -31,7 +31,7 @@ namespace OS_Square
                     .AccessToken(accessToken).Build();
 
             // Get the default location or an exact name match as specified in the plugin settings
-            _locationId = GetLocationId(_settings.GetXmlProperty("genxml/textbox/locationname"));
+            _locationId = GetLocation(_settings.GetXmlProperty("genxml/textbox/locationname")).Id;
         }
         public static NBrightInfo GetProviderSettings()
         {
@@ -47,9 +47,9 @@ namespace OS_Square
             // Every payment you process must have a unique idempotency key.
             // If you're unsure whether a particular payment succeeded, you can reattempt
             // it with the same idempotency key without worrying about double charging
-            var uuid = IdempotencyKey();
+            var idempotencyKey = IdempotencyKey();
 
-            // TODO: improve stability by saving idempotency for possible 
+            // TODO: improve stability by saving idempotency key for possible 
             //       resubmission in the event of a network failure
 
             var appliedtotal = orderData.PurchaseInfo.GetXmlPropertyDouble("genxml/appliedtotal");
@@ -77,12 +77,12 @@ namespace OS_Square
             .Build();
 
             // Creating Payment Request
-            // NOTE: OS Order Id is passed in both the reference_id & note field
+            // NOTE: OS Order Id is passed in both the ReferenceId & Note field
             // because the reference_id is not visible in the square ui but can be 
             // found via the transactions api.
             var body = new CreatePaymentRequest.Builder(
                 nonce,
-                uuid,
+                idempotencyKey,
                 bodyAmountMoney)
             .Autocomplete(true)
             .LocationId(_locationId)
@@ -98,9 +98,9 @@ namespace OS_Square
             }
             catch (Exception ex)
             {
-                //TODO: detect network failures.  Wait. Resubmit with Idempotency uuid.
+                //TODO: detect network failures.  Wait. Resubmit with Idempotency Key.
                 var objEventLog = new EventLogController();
-                objEventLog.AddLog("OS_Square err ", "Message : " + ex.Message, (IPortalSettings)portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
+                objEventLog.AddLog("OS_Square error", "Message : " + ex.Message, (IPortalSettings)portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
                 orderData.AddAuditMessage(ex.Message, "notes", UserController.Instance.GetCurrentUserInfo().Username, "False");
                 
                 // swallowing errors that have been added to the event & audit logs
@@ -109,7 +109,7 @@ namespace OS_Square
             return null;
         }
 
-        private static string GetLocationId(string squareLocationName)
+        private static Location GetLocation(string squareLocationName)
         {
 
             var locationList = _client.LocationsApi.ListLocations();
@@ -125,9 +125,23 @@ namespace OS_Square
 
             // Check if plugin settings have an location name that matches 
             // a name in the Square location list
-            myLocation = !string.IsNullOrWhiteSpace(squareLocationName) ? locationList.Locations.Where(x => x.Name.Equals(squareLocationName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault() : myLocation;
+            if (!string.IsNullOrWhiteSpace(squareLocationName)) {
+                myLocation = locationList.Locations.Where(x => x.Name.Equals(squareLocationName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+                if (myLocation == null) {
 
-            return myLocation.Id;
+                    // Generate a log entry for the DNN admin
+                    var portalSettings = PortalController.Instance.GetCurrentSettings();
+                    var userId = UserController.Instance.GetCurrentUserInfo().UserID;
+                    var objEventLog = new EventLogController();
+                    objEventLog.AddLog("OS_Square error", "OS_Square err Invalid Location Name: " + squareLocationName, (IPortalSettings)portalSettings, userId, EventLogController.EventLogType.ADMIN_ALERT);
+
+                    // Throw an error to avoid a user with multiple locations
+                    // from accidently charging their default location.
+                    throw new Exception("Invalid Location Name. Charge aborted.");
+                }
+            }
+
+            return myLocation;
         }
 
         public static string IdempotencyKey()
