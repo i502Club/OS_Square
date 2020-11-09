@@ -49,7 +49,7 @@ payment form in your OpenStore.
  * Square v6.5.0.0
  * NewtonSoft v12 
  
- Note: Currently the DNN default install does not have a high enough 
+ Note: Currently the DNN default install does not have a high enough(i502 accidental pun)
  version of Newtonsoft.Json for the Square lib to work. Therefore the module installation 
  will create a bin/Newtonsoft.Json/v12 directory anbd update the web.config to include 
  the binding redirects that enable the Square library to locate it. There is no sql 
@@ -71,13 +71,15 @@ before it's name change to OpenStore. It was also depending on an earlier versio
 Square.Connect library.  The v2 version of this plugin began when when the breaking changes 
 from Square.Connect 2.25 were mitigated. v3 represents the migration from the deprectated 
 Square.Connect library to it's successor,  the Square library which is currently at v6.5. 
-This version 3.0.0-alpha is to allow for some testing and feedback particularly on foreign currencies 
-and to allow for smoking out(pun intended) any case scenarios that could have been overlooked. 
+This version 3.0.0-alpha is to allow for some testing, feedback particularly on foreign 
+currencies, and for smoking testing(i502 pun intended) for case scenarios that may have 
+been overlooked.  v3.0.0-alpha is the first public release so we apologize if it's a 
+bit mis-leading to begin at a v3.
 
 
 ## Authors
 [i502 Club](https://www.i502.club)
-This project was based on the template work by David Lee for OpenStore
+This project was based on the templates for OpenStore which David Lee provides for the community.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
