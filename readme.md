@@ -16,7 +16,7 @@ api key for this provider to work.
 2. Go into Open-Store BO>Admin, the "OS_Square" option should be listed.
 ![OpenStore Back Office Admin Panel](assets/images/plugin_installed.png)
 
-3. See Square's ![Square logo](assets/images/square-logo.png) [developers](https://developer.squareup.com/) portal for your Application ID & API Access Token.
+3. ![Square logo](assets/images/square-logo.png)  See Square's [developers](https://developer.squareup.com/) portal for your Application ID & API Access Token.
 
 4. Configure your OpenStore Back Office plugin settings for the Square plugin with the credentials from step 3. 
 ![OS_Square Plugin Settings](assets/images/settings.png)
