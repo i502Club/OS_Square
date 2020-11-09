@@ -20,10 +20,8 @@
         <dependency type="managedPackage" version="8.5.2">NBrightTemplateSys</dependency>
         
         <!-- Square dependencies -->
-				<dependency type="type">Square.Connect</dependency>
-				<dependency type="type">System.ComponentModel.Annotations</dependency>
-        <dependency type="type">System.ComponentModel.DataAnnotations</dependency>
-        <dependency type="type">RestSharp</dependency>
+				<dependency type="type">Square</dependency>
+        <dependency type="type">Newtonsoft.Json</dependency>
         
 				<!-- DNN Dependency Injection support dependencies-->
         <dependency type="type">DotNetNuke.DependencyInjection</dependency>
@@ -47,20 +45,14 @@
 							<name>OS_Square.dll</name>
 						</assembly>
             <assembly>
-              <path>bin</path>
-              <name>Square.Connect.dll</name>
+              <path>bin\Newtonsoft.Json\v12</path>
+              <name>Newtonsoft.Json.dll</name>
+              <version>12.00.00</version>
             </assembly>
             <assembly>
               <path>bin</path>
-              <name>System.ComponentModel.Annotations.dll</name>
-            </assembly>
-            <assembly>
-              <path>bin</path>
-              <name>System.ComponentModel.DataAnnotations.dll</name>
-            </assembly>
-            <assembly>
-              <path>bin</path>
-              <name>RestSharp.dll</name>
+              <name>Square.dll</name>
+              <version>06.05.00</version>
             </assembly>
 					</assemblies>
 				</component>
@@ -74,6 +66,31 @@
 						</file>
 					</files>
 				</component>
+        <component type="Config">
+          <config>
+            <configFile>web.config</configFile>
+            <install>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/runtime/assemblyBinding/dependentAssembly/assemblyIdentity [@name='NewtonSoft.json']" action="update" key="name" collision="ignore">
+                    <!-- Updated by OS_Square -->
+                    <!-- version 10 is required by current release of DNN 9.7.2 -->
+                    <!-- version 12 is required by Square v6.5 -->
+                    <bindingRedirect oldVersion="1.0.0.0-10.0.4.0" newVersion="10.0.0.0" />
+                    <bindingRedirect oldVersion="10.0.5.0-32767.32767.32767.32767" newVersion="12.0.0.0" />
+                    <codeBase version="12.0.0.0" href="bin/NewtonSoft.Json/V12/Newtonsoft.Json.dll" />
+                  </node>
+                </nodes>
+              </configuration>
+            </install>
+            <uninstall>
+              
+                <!-- TODO: Consider Uninstalling the bin/Newtonsoft.json/v12 directory -->
+                <!-- We can leave these files without harming an install for now -->
+                
+            </uninstall>
+          </config>
+        </component>
       </components>
 		</package>
 	</packages>
