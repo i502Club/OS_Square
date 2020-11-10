@@ -71,11 +71,6 @@
           not risk any potential issues with DNN not being compatable with v12 (it may be)-->
     <Copy SourceFiles="$(MSBuildDnnBinPath)\Newtonsoft.Json\v12\Newtonsoft.Json.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin\Newtonsoft.Json\v12\"/>
 
-    <!-- DotNetNuke Dependency Injection support libs -->
-    <Copy SourceFiles="$(MSBuildDnnBinPath)\DotNetNuke.DependencyInjection.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
-    <Copy SourceFiles="$(MSBuildDnnBinPath)\Microsoft.Extensions.DependencyInjection.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
-    <Copy SourceFiles="$(MSBuildDnnBinPath)\Microsoft.Extensions.DependencyInjection.Abstractions.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
-
     <!-- create the INSTALL NBrightBuy_Resource.ZIP file -->
     <Copy SourceFiles="@(InstallInclude)" DestinationFolder="$(MSBuildProjectDirectory)\ResourcesZip\%(RecursiveDir)" />
     <Copy SourceFiles="@(PluginFiles)" DestinationFolder="$(MSBuildProjectDirectory)\ResourcesZip\Plugins" />

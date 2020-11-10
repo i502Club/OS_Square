@@ -20,14 +20,9 @@
         <dependency type="managedPackage" version="8.5.2">NBrightTemplateSys</dependency>
         
         <!-- Square dependencies -->
-				<dependency type="type">Square</dependency>
-        <dependency type="type">Newtonsoft.Json</dependency>
-        
-				<!-- DNN Dependency Injection support dependencies-->
-        <dependency type="type">DotNetNuke.DependencyInjection</dependency>
-        <dependency type="type">Microsoft.Extensions.DependencyInjection</dependency>
-        <dependency type="type">Microsoft.Extensions.DependencyInjection.Abstractions</dependency>
-      
+				<dependency type="type" version="6.5.0">Square</dependency>
+        <dependency type="type" version="12.0.0">Newtonsoft.Json</dependency>
+     
       </dependencies>
       <components>
 				<component type="ResourceFile">
