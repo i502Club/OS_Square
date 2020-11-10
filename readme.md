@@ -1,9 +1,16 @@
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 # OS_Square
 A DNN OpenStore payment provider plugin
 
 ## Getting Started
-This is a payment provider plugin for ![Square logo](assets/images/square-logo.png)(https://www.openstore-ecommerce.com/en-gb/OpenStore). It will enable any 
-DNN 9.4+ site running OpenStore to accept CC payments into their ![Square logo](assets/images/square-logo.png)[Square](https://squareup.com/)Square account.  You must 
+This is a payment provider plugin for [![OpenStore Ecommerce](assets/images/os_logo_150X29.png)](https://www.openstore-ecommerce.com/en-gb/OpenStore). It will enable any 
+DNN 9.4+ site running OpenStore to accept CC payments into their ![Square logo](assets/images/square-logo.png#square-logo)[Square](https://squareup.com/)Square account.  You must 
 have a valid Square account and a [developers](https://developer.squareup.com/) 
 api key for this provider to work.  
 
@@ -34,7 +41,7 @@ inputs.  It's required for encrypting your Square Application Id and Access Toki
 5. Select currency code that is relevant to your Square account.  Presently there is 
 support for USD, CAD, AUD, GBP, JPY.
 
- ![OS_Square supported currency flags](assets/images/flags_292X40.png)
+ ![OS_Square supported currency flags](assets/images/flags_292X40.png#flags){.center}
 
 
 6. Optionally enter a Location Name.  The provider by default uses the first location 
@@ -109,4 +116,4 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 ## Contribute
  Don't bogart the code(i502 forced pun). Pass it around(last one I promise). You can create an issue or submit a pull request
- to help make the plugin work better.
+ to help make the plugin work better. <p style="color:red">red text</p>
