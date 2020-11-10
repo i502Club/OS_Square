@@ -31,7 +31,7 @@ api key for this provider to work.
 
 5. Select the currency code that is relevant to your Square account.  Presently there is 
 support for USD, CAD, AUD, GBP, JPY.
-<img class style="display:block;margin:auto auto" src="assets/images/flags_292X40.png">
+![OS_Square supported currency flags](assets/images/flags_292X40.png)
 
 
 
@@ -84,7 +84,7 @@ StartUp class at this time.
 
 ## History
 This module is the evolution of an earlier version that worked with the NBStore system 
-before it's name change to OpenStore. The v2 version of this plugin began when  
+before it's name change to OpenStore. The v2 version of this plugin began when 
 breaking changes from Square.Connect 2.25 were mitigated. v3 represents the migration 
 from the deprecated Square.Connect library to it's successor,  the Square library 
 which is currently at v6.5. This version 3.0.0-alpha is to allow for some testing, 
