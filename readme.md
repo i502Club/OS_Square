@@ -32,8 +32,7 @@ api key for this provider to work.
 5. Select the strain(i502 warm up pun) of currency code that is relevant to your Square account.  Presently there is 
 support for USD, CAD, AUD, GBP, JPY.
 
-![OS_Square supported currency flags](assets/images/flags_292X40.png)
-
+ ![OS_Square supported currency flags](assets/images/flags_292X40.png)
 
 
 6. Optionally enter a Location Name.  The provider by default uses the first location 
