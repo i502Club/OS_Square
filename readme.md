@@ -1,10 +1,3 @@
-<style>
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
 # OS_Square
 A DNN OpenStore payment provider plugin
 
@@ -41,7 +34,7 @@ inputs.  It's required for encrypting your Square Application Id and Access Toki
 5. Select currency code that is relevant to your Square account.  Presently there is 
 support for USD, CAD, AUD, GBP, JPY.
 
- ![OS_Square supported currency flags](assets/images/flags_292X40.png#flags){.center}
+ ![OS_Square supported currency flags](assets/images/flags_292X40.png#flags)
 
 
 6. Optionally enter a Location Name.  The provider by default uses the first location 
@@ -116,4 +109,4 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 ## Contribute
  Don't bogart the code(i502 forced pun). Pass it around(last one I promise). You can create an issue or submit a pull request
- to help make the plugin work better. <p style="color:red">red text</p>
+ to help make the plugin work better.
