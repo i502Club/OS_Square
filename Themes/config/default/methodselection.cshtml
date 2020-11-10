@@ -67,7 +67,7 @@ else {
             } else {
 
                 // Setting a short lived cookie to pass the nonce. It gets removed when the 
-                // Square.Connect assembly finishes a charge and the user gets redirected.
+                // Square payment finishes and the user gets redirected.
                 var homeUrl = location.origin;
                 Cookies.set('nonce', nonce, { expires: 1/24, path: '/', domain: homeUrl.replace(location.protocol, "").replace("//", "").replace("/", "") });
 
