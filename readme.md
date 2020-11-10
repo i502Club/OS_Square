@@ -39,14 +39,14 @@ support for USD, CAD, AUD, GBP, JPY.
 
 6. Optionally enter a Location Name.  The provider by default uses the first location 
 returned from your account via the ListLocations endpoint but if you have more than one 
-location you can optionally specify it by Name in the Location input.  <b><em>If the name 
+location you can optionally specify it by Name in the Location input.  ***If the name 
 you entered does not match a Location Name in your Square account you will receive an 
-error</em></b>
+error***
 
 
 7. Select the sandbox mode when you are testing against your sandbox account.  Uncheck this 
-box when you are ready to send requests to your actual Square account.  <b><em>You must have  
-IIS bound to localhost for testing</em></b>.  Urls such as dnndev.me or dnn.local won't work.
+box when you are ready to send requests to your actual Square account.  ***You must have  
+IIS bound to localhost for testing***.  Urls such as dnndev.me or dnn.local won't work.
 
 ---
 
@@ -80,8 +80,8 @@ payment form during your OpenStore checkout process.
  version of Newtonsoft.Json for the Square lib to work. Therefore the module installation 
  will create a bin/Newtonsoft.Json/v12 directory and update the web.config to include 
  the binding redirects that enable the Square library to locate it. There is no sql 
- provider with this module install. <b><em>Please follow best practice and back up both 
- your db & file system before installing</em></b>.
+ provider with this module install. ***Please follow best practice and back up both 
+ your db & file system before installing***.
 
 
 ## History
