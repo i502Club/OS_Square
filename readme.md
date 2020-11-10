@@ -2,16 +2,18 @@
 A DNN OpenStore payment provider plugin
 
 ## Getting Started
-This is a payment provider plugin for [![OpenStore Ecommerce](assets/images/os_logo_150X29.png)](https://www.openstore-ecommerce.com/en-gb/OpenStore). It will enable any 
-DNN 9.4+ site running OpenStore to accept CC payments into their Square account.  You must 
+This is a payment provider plugin for ![Square logo](assets/images/square-logo.png)(https://www.openstore-ecommerce.com/en-gb/OpenStore). It will enable any 
+DNN 9.4+ site running OpenStore to accept CC payments into their ![Square logo](assets/images/square-logo.png)[Square](https://squareup.com/)Square account.  You must 
 have a valid Square account and a [developers](https://developer.squareup.com/) 
 api key for this provider to work.  
 
 
 
 ### Installing
-1. Install into DNN as a normal module.  Ensure that your DNN OpenStore installation is using 
-   at least v8.5.2 of the [NBrightTemplateSys](https://github.com/nbrightproject/NBrightTS).
+1. Install into DNN as a normal module.  The installation process will ensure that your 
+DNN OpenStore installation is using at least v8.5.2 of the [NBrightTemplateSys](https://github.com/nbrightproject/NBrightTS). 
+v8.5.2 is the first NBrightTemplateSys version to include encryption support for text 
+inputs.  It's required for encrypting your Square Application Id and Access Tokin(oops typo).  
 
 
 
@@ -20,7 +22,7 @@ api key for this provider to work.
 
 
 
-3. ![Square logo](assets/images/square-logo.png)  See Square's [developers](https://developer.squareup.com/) portal for your Application ID & API Access Token.
+3.  See Square's [developers](https://developer.squareup.com/) portal for your Application ID & Access Token.
 
 
 
@@ -29,7 +31,7 @@ api key for this provider to work.
 
 
 
-5. Select the strain(i502 warm up pun) of currency code that is relevant to your Square account.  Presently there is 
+5. Select currency code that is relevant to your Square account.  Presently there is 
 support for USD, CAD, AUD, GBP, JPY.
 
  ![OS_Square supported currency flags](assets/images/flags_292X40.png)
@@ -48,7 +50,7 @@ IIS bound to localhost for testing.  Urls such as dnndev.me or dnn.local won't w
 
 ---
 
-*Congratulations*! The gateway should now be ready and your customers can purchase securely with the (c)Square 
+*Congratulations*! The gateway should now be ready and your customers can purchase securely with the Square 
 payment form during your OpenStore checkout process.
 
 ![Square payment form](assets/images/cc_form.png)
@@ -60,7 +62,7 @@ payment form during your OpenStore checkout process.
  2. Clone(i502 low hanging pun fruit) the repo to your /DesktopModules/i502Club/ directory.
  2. Your development environment IIS server must bind your DNN site to localhost 
 	otherwise the payment form & Square assembly will not work using the sandbox.  
- 3. See Square's developer portal for your Application ID, API Access Token and test cc card information.
+ 3. See Square's developer portal for your Application ID, Access Token and test cc card information.
  4. Configure your settings for the Square plugin.  You will need an Application ID and API Access Token.
 	The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
