@@ -1,7 +1,7 @@
 ﻿<div class="License">
 	<h3>License</h3>
 	<p class="Owner">
-		i502 Club  <a href=http://www.i502.club>http://www.i502.club</a></br>
+		i502 Club  <a href="https://www.i502.club">www.i502.club</a></br>
 		Copyright (c) 2020</br>	
 		by i502 Club</br>
 	</p>
