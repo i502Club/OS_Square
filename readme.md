@@ -3,7 +3,7 @@ A DNN OpenStore payment provider plugin
 
 ## Getting Started
 This is a payment provider plugin for [![OpenStore Ecommerce](assets/images/os_logo_150X29.png)](https://www.openstore-ecommerce.com/en-gb/OpenStore). It will enable any 
-DNN 9.4+ site running OpenStore to accept CC payments into their ![Square logo](assets/images/square-logo.png#square-logo)[Square](https://squareup.com/)Square account.  You must 
+DNN 9.4+ site running OpenStore to accept CC payments into their [Square](https://squareup.com/) account.  You must 
 have a valid Square account and a [developers](https://developer.squareup.com/) 
 api key for this provider to work.  
 
@@ -39,14 +39,14 @@ support for USD, CAD, AUD, GBP, JPY.
 
 6. Optionally enter a Location Name.  The provider by default uses the first location 
 returned from your account via the ListLocations endpoint but if you have more than one 
-location you can optionally specify it by Name in the Location input.  *If the name 
+location you can optionally specify it by Name in the Location input.  <b><em>If the name 
 you entered does not match a Location Name in your Square account you will receive an 
-error*
+error</em></b>
 
 
 7. Select the sandbox mode when you are testing against your sandbox account.  Uncheck this 
-box when you are ready to send requests to your actual Square account.  You must have your 
-IIS bound to localhost for testing.  Urls such as dnndev.me or dnn.local won't work.
+box when you are ready to send requests to your actual Square account.  <b><em>You must have  
+IIS bound to localhost for testing</em></b>.  Urls such as dnndev.me or dnn.local won't work.
 
 ---
 
@@ -62,11 +62,13 @@ payment form during your OpenStore checkout process.
  2. Clone(i502 low hanging pun fruit) the repo to your /DesktopModules/i502Club/ directory.
  2. Your development environment IIS server must bind your DNN site to localhost 
 	otherwise the payment form & Square assembly will not work using the sandbox.  
- 3. See Square's developer portal for your Application ID, Access Token and test cc card information.
+ 3. See the [Square](https://developer.squareup.com/) developer portal for your Application ID, Access Token and test cc card information.
  4. Configure your settings for the Square plugin.  You will need an Application ID and API Access Token.
 	The provider by default uses the first location returned from your account but if you have more 
 	than one location you can optionally specify it by Name in the Location input.
  5. You should be able to compile and attach the debugger at this point.
+ 6. You can test charges against your sandbox using the [test CC numbers](https://developer.squareup.com/docs/testing/test-values) 
+
 
 
 ### Dependencies
@@ -78,8 +80,8 @@ payment form during your OpenStore checkout process.
  version of Newtonsoft.Json for the Square lib to work. Therefore the module installation 
  will create a bin/Newtonsoft.Json/v12 directory and update the web.config to include 
  the binding redirects that enable the Square library to locate it. There is no sql 
- provider with this module install. *Please follow best practice and back up both 
- your db & file system before installing*.
+ provider with this module install. <b><em>Please follow best practice and back up both 
+ your db & file system before installing</em></b>.
 
 
 ## History
@@ -108,5 +110,5 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 * All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & [OpenStore]( https://github.com/openstore-ecommerce/OpenStore) 
 
 ## Contribute
- Don't bogart the code(i502 forced pun). Pass it around(last one I promise). You can create an issue or submit a pull request
+ Don't bogart the code(i502 forced pun). Pass it around(i502 double down, last one I promise and you shouldn't be doing that now anyhow). You can create an issue or submit a pull request
  to help make the plugin work better.
