@@ -11,7 +11,7 @@ api key for this provider to work.
 
 ### Installing
 1. Install into DNN as a normal module.  Ensure that your DNN OpenStore installation is using 
-   at least v8.5.2 of the NBrightTemplateSys.
+   at least v8.5.2 of the [NBrightTemplateSys](https://github.com/nbrightproject/NBrightTS).
 
 
 
@@ -29,8 +29,9 @@ api key for this provider to work.
 
 
 
-5. Select the currency code that is relevant to your Square account.  Presently there is 
+5. Select the strain(i502 warm up pun) of currency code that is relevant to your Square account.  Presently there is 
 support for USD, CAD, AUD, GBP, JPY.
+
 ![OS_Square supported currency flags](assets/images/flags_292X40.png)
 
 
@@ -43,7 +44,8 @@ error*
 
 
 7. Select the sandbox mode when you are testing against your sandbox account.  Uncheck this 
-box when you are ready to send requests to your actual Square account.
+box when you are ready to send requests to your actual Square account.  You must have your 
+IIS bound to localhost for testing.  Urls such as dnndev.me or dnn.local won't work.
 
 ---
 
@@ -56,7 +58,7 @@ payment form during your OpenStore checkout process.
 
 ### Development
  1. Install the module into your development enviroment.
- 2. Clone the repo to your /DesktopModules/i502Club/ directory.
+ 2. Clone(i502 low hanging pun fruit) the repo to your /DesktopModules/i502Club/ directory.
  2. Your development environment IIS server must bind your DNN site to localhost 
 	otherwise the payment form & Square assembly will not work using the sandbox.  
  3. See Square's developer portal for your Application ID, API Access Token and test cc card information.
@@ -76,28 +78,27 @@ payment form during your OpenStore checkout process.
  will create a bin/Newtonsoft.Json/v12 directory and update the web.config to include 
  the binding redirects that enable the Square library to locate it. There is no sql 
  provider with this module install. *Please follow best practice and back up both 
- your db &  file system before installing*.
+ your db & file system before installing*.
 
-The installation of DotNetNuke.DependencyInjection & it's 2 supporting 
-libraries is in preparation for .net core support.  There is no usage of the 
-StartUp class at this time.
 
 ## History
 This module is the evolution of an earlier version that worked with the NBStore system 
 before it's name change to OpenStore. The v2 version of this plugin began when 
 breaking changes from Square.Connect 2.25 were mitigated. v3 represents the migration 
-from the deprecated Square.Connect library to it's successor,  the Square library 
-which is currently at v6.5. This version 3.0.0-alpha is to allow for some testing, 
-feedback particularly on foreign currencies, and for smoke testing(i502 pun intended) for 
-case scenarios that may have been overlooked.  The plugin provides support for 
-USD, AUD, GBP, CAD and JPY currencies.  You can set your currency code from the 
-OS Back Office.  v3.0.0-alpha is the first public release.
+from the deprecated Square.Connect library to it's successor, the Square library 
+which is currently at v6.5. 
+
+This current version 3.0.1-rc is to allow for some testing, feedback particularly 
+on foreign currencies, and for smoke testing(i502 technical pun) for 
+case scenarios that may have been overlooked or weren't relevant to our initial goals.  
+The plugin provides support for USD, AUD, GBP, CAD and JPY currencies.  You can set 
+your currency code from the OS Back Office.  v3.0.1-rc is the first public release.
 
 
 ## Authors
 [![OpenStore Ecommerce](assets/images/icon_extension.png)](https://www.i502.club) [i502 Club](https://www.i502.club)
 
-This project was built using templates for OpenStore which David Lee, OS's creator, has provided for the community.
+This project was built using templates provided for the OpenStore community by it's creator David Lee. Disons merci.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
@@ -106,5 +107,5 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 * All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & [OpenStore]( https://github.com/openstore-ecommerce/OpenStore) 
 
 ## Contribute
- Don't bogart the code(i502 forced pun). Contributions are awesome.  You can create an issue or submit a pull request
+ Don't bogart the code(i502 forced pun). Pass it around(last one I promise). You can create an issue or submit a pull request
  to help make the plugin work better.
