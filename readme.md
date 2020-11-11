@@ -20,7 +20,7 @@ The good news is that you only have to make sure that your web config has the pr
 binding redirects and codebase sections in place for the Newtonsoft assembly and 
 then you should be fine.  The entry we use is as follows:
 
-```html
+```
 <pre>
 <!-- Changed manually for OS_Square -->
 <dependentAssembly xmlns="urn:schemas-microsoft-com:asm.v1">
