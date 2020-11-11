@@ -7,6 +7,31 @@ DNN 9.4+ site running OpenStore to accept CC payments into their [Square](https:
 have a valid Square account and a [developers](https://developer.squareup.com/) 
 api key for this provider to work.  
 
+### Prepare to Install
+The current version of DNN depends on Newtonsoft.Json v10.0.3 and Square v6.5 depends on 
+Newtonsoft.Json 12.  You cannot overwrite the version which the Platform depends on therefore 
+we need to update the web config to support the newer version of Newtonsoft.  We are still 
+resolving issues related to getting the xml merge to properly update the config during 
+an install.  ***This module will volcano(i502 pun warm up) your install without some preparation***.
+
+The good news is that you only have to make sure that your web config has the proper 
+binding redirects and codebase sections in place for the Newtonoft assembly and 
+then you should be fine.  The results you want to see are like below:
+
+<code>
+<dependentAssembly xmlns="urn:schemas-microsoft-com:asm.v1">
+   <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
+   <bindingRedirect oldVersion="0.0.0.0-10.0.3.32767" newVersion="10.0.0.0" />
+   <bindingRedirect oldVersion="10.0.4.0-32767.32767.32767.32767" newVersion="12.0.0.0" />
+   <codeBase version="12.0.0.0" href="bin\NewtonSoft.Json\V12\Newtonsoft.Json.dll" />
+   <codeBase version="10.0.0.0" href="bin\Newtonsoft.Json.dll" />
+</dependentAssembly>
+</code>
+
+That should be it.
+
+There module installation should place the v12 version into the proper directory 
+which we've specified in the web config.
 
 
 ### Installing
