@@ -14,14 +14,13 @@ therefore we need to update the web config to support the newer version of Newto
 We are still resolving issues related to getting the xml merge to properly update the 
 config during an install so this is a manual step at this stage.
 
-***This module will volcano(i502 pun warm up) your install without preparation***.
+***This module will volcano(i502 warm up) your install without preparation***.
 
 The good news is that you only have to make sure that your web config has the proper 
 binding redirects and codebase sections in place for the Newtonsoft assembly and 
 then you should be fine.  The entry we use is as follows:
 
 ```
-<pre>
 <!-- Changed manually for OS_Square -->
 <dependentAssembly xmlns="urn:schemas-microsoft-com:asm.v1">
    <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
@@ -30,13 +29,12 @@ then you should be fine.  The entry we use is as follows:
    <codeBase version="12.0.0.0" href="bin\NewtonSoft.Json\V12\Newtonsoft.Json.dll" />
    <codeBase version="10.0.3.0" href="bin\Newtonsoft.Json.dll" />
 </dependentAssembly>
-</pre>
 ```
 
 That should be it.  You should make sure your installation works with the config changes 
 before even trying to install the module.
 
-Restart your DNN application and hold your breath.  Are we ok?
+Restart your DNN application and hold your breath.  Are we Iree?
 
 The scary part is over.
 
@@ -53,7 +51,7 @@ and codeBase changes.
 1. Install into DNN as a normal module.  The installation process will ensure that your 
 DNN OpenStore installation is using at least v8.5.2 of the [NBrightTemplateSys](https://github.com/nbrightproject/NBrightTS). 
 v8.5.2 is the first NBrightTemplateSys version to include encryption support for text 
-inputs.  It's required for encrypting your Square Application Id and Access Tokin(oops typo).  
+inputs.  It's required for encrypting your Square Application Id and Access Tokin(i502 typo).  
 
 
 
@@ -86,7 +84,8 @@ error***
 
 7. Select the sandbox mode when you are testing against your sandbox account.  Uncheck this 
 box when you are ready to send requests to your actual Square account.  ***You must have  
-IIS bound to localhost for testing***.  Urls such as dnndev.me or dnn.local won't work.
+IIS bound to localhost for testing***.  Urls such as dnndev.me or dnn.local won't work.  Your 
+production server must be using https.
 
 ---
 
