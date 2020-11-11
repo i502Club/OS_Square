@@ -115,7 +115,7 @@ payment form during your OpenStore checkout process.
  * Square v6.5.0.0
  * NewtonSoft v12 
  
- Note: As noted, the DNN default install does not have a high enough(i502 accidental pun)
+ Note: The DNN default install does not have a high enough(i502 accidental pun)
  version of Newtonsoft.Json for the Square lib to work. Therefore the module installation 
  will create a bin/Newtonsoft.Json/v12 directory. There is no sql provider with this module 
  install but it's still best to ***follow best practice and back up both 
@@ -149,5 +149,5 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 * All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & [OpenStore]( https://github.com/openstore-ecommerce/OpenStore) 
 
 ## Contribute
- Don't bogart the code(i502 forced pun). Pass it around(i502 double down, last one I promise and you shouldn't be doing that now anyhow). You can create an issue or submit a pull request
+ Don't bogart the code(i502 forced pun). Pass it around(i502 double down, last one I promise). You can create an issue or submit a pull request
  to help make the plugin work better.
