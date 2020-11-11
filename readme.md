@@ -9,29 +9,44 @@ api key for this provider to work.
 
 ### Prepare to Install
 The current version of DNN depends on Newtonsoft.Json v10.0.3 and Square v6.5 depends on 
-Newtonsoft.Json 12.  You cannot overwrite the version which the Platform depends on therefore 
-we need to update the web config to support the newer version of Newtonsoft.  We are still 
-resolving issues related to getting the xml merge to properly update the config during 
-an install.  ***This module will volcano(i502 pun warm up) your install without some preparation***.
+Newtonsoft.Json 12.  You cannot overwrite the version which DNN depends on without errors 
+therefore we need to update the web config to support the newer version of Newtonsoft.  
+We are still resolving issues related to getting the xml merge to properly update the 
+config during an install so this is a manual step at this stage.
+
+***This module will volcano(i502 pun warm up) your install without preparation***.
 
 The good news is that you only have to make sure that your web config has the proper 
-binding redirects and codebase sections in place for the Newtonoft assembly and 
-then you should be fine.  The results you want to see are like below:
+binding redirects and codebase sections in place for the Newtonsoft assembly and 
+then you should be fine.  The entry we use is as follows:
 
-<code>
+```html
+<pre>
+<!-- Changed manually for OS_Square -->
 <dependentAssembly xmlns="urn:schemas-microsoft-com:asm.v1">
    <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
-   <bindingRedirect oldVersion="0.0.0.0-10.0.3.32767" newVersion="10.0.0.0" />
+   <bindingRedirect oldVersion="0.0.0.0-10.0.3.32767" newVersion="10.0.3.0" />
    <bindingRedirect oldVersion="10.0.4.0-32767.32767.32767.32767" newVersion="12.0.0.0" />
    <codeBase version="12.0.0.0" href="bin\NewtonSoft.Json\V12\Newtonsoft.Json.dll" />
-   <codeBase version="10.0.0.0" href="bin\Newtonsoft.Json.dll" />
+   <codeBase version="10.0.3.0" href="bin\Newtonsoft.Json.dll" />
 </dependentAssembly>
-</code>
+</pre>
+```
 
-That should be it.
+That should be it.  You should make sure your installation works with the config changes 
+before even trying to install the module.
 
-There module installation should place the v12 version into the proper directory 
-which we've specified in the web config.
+Restart your DNN application and hold your breath.  Are we ok?
+
+The scary part is over.
+
+The module installation will place the v12 version into the proper directory 
+which will match up with the manual changes we performed on the web config.  
+
+We expect DNN 10 to update Newtonsoft.Json dependency and at that point we should be able 
+to simplify the install.  ***DNN upgrades may overwrite the config changes that 
+OS_Square needs in order to work*** which would require re-applying the bindingRedirect 
+and codeBase changes.
 
 
 ### Installing
@@ -101,12 +116,12 @@ payment form during your OpenStore checkout process.
  * Square v6.5.0.0
  * NewtonSoft v12 
  
- Note: Currently the DNN default install does not have a high enough(i502 accidental pun)
+ Note: As noted, the DNN default install does not have a high enough(i502 accidental pun)
  version of Newtonsoft.Json for the Square lib to work. Therefore the module installation 
- will create a bin/Newtonsoft.Json/v12 directory and update the web.config to include 
- the binding redirects that enable the Square library to locate it. There is no sql 
- provider with this module install. ***Please follow best practice and back up both 
- your db & file system before installing***.
+ will create a bin/Newtonsoft.Json/v12 directory. There is no sql provider with this module 
+ install but it's still best to ***follow best practice and back up both 
+ your db & file system before installing***.  
+
 
 
 ## History
