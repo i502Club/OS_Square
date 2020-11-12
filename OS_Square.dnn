@@ -62,14 +62,19 @@
             <install>
               <configuration>
                 <nodes>
-                  <node path="/configuration/runtime/assemblyBinding/dependentAssembly/assemblyIdentity [@name='NewtonSoft.json']" action="update" key="name" collision="overwrite">
-                     <!--Updated by OS_Square 
+                  <node path="/configuration/runtime/ab:assemblyBinding/ab:dependentAssembly[ab:assemblyIdentity/@name='Newtonsoft.Json']" 
+                        action="update" 
+                        targetpath="/configuration/runtime/ab:assemblyBinding/ab:dependentAssembly[ab:assemblyIdentity/@name='Newtonsoft.Json']/ab:bindingRedirect" 
+                        nameSpace="urn:schemas-microsoft-com:asm.v1" 
+                        nameSpacePrefix="ab" 
+                        collision="save">
+                    <!--Updated by OS_Square 
                      version 10 is required by current release of DNN 9.7.2 
-                     version 12 is required by Square v6.5--> 
-                    <bindingRedirect oldVersion="1.0.0.0-10.0.3.32767" newVersion="10.0.0.0" />
+                     version 12 is required by Square v6.5-->
+                    <bindingRedirect oldVersion="1.0.0.0-10.0.3.32767" newVersion="10.0.3.0" />
                     <bindingRedirect oldVersion="10.0.4.0-32767.32767.32767.32767" newVersion="12.0.0.0" />
                     <codeBase version="12.0.0.0" href="bin\NewtonSoft.Json\V12\Newtonsoft.Json.dll" />
-                    <codeBase version="10.0.0.0" href="bin\Newtonsoft.Json.dll" />
+                    <codeBase version="10.0.3.0" href="bin\Newtonsoft.Json.dll" />
                   </node>
                 </nodes>
               </configuration>
