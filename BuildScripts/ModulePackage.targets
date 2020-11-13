@@ -68,7 +68,7 @@
     <!-- Currently DNN is using v10.0.3 which wont work with the Square lib -->
     <!-- This Copy task works with the dnn manifest config section changes that create binding 
           redirects during the module install to enable the versions to coexist and 
-          not risk any potential issues with DNN not being compatable with v12 (it may be)-->
+          not risk any potential issues with DNN not being compatable with v12 -->
     <Copy SourceFiles="$(MSBuildDnnBinPath)\Newtonsoft.Json\v12\Newtonsoft.Json.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin\Newtonsoft.Json\v12\"/>
 
     <!-- create the INSTALL NBrightBuy_Resource.ZIP file -->
