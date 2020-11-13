@@ -7,44 +7,43 @@ DNN 9.4+ site running OpenStore to accept CC payments into their [Square](https:
 have a valid Square account and a [developers](https://developer.squareup.com/) 
 api key for this provider to work.  
 
-### Prepare to Install
+### About the Install
 The current version of DNN depends on Newtonsoft.Json v10.0.3 and Square v6.5 depends on 
-Newtonsoft.Json 12.  You cannot overwrite the version which DNN depends on without errors 
-therefore we need to update the web config to support the newer version of Newtonsoft.  
-We are still resolving issues related to getting the xml merge to properly update the 
-config during an install so this is a manual step at this stage.
+Newtonsoft.Json 12+.  You cannot overwrite the version which DNN depends on without errors 
+therefore this module install updates the web config with binding redirects to support 
+side by side versions of Newtonsoft. 
 
-***This module will volcano(i502 warm up) your install without preparation***.
+***NOTE: This is NOT a supported, nor-suggested, process to override and could very well 
+have major impacts to DNN functionality*** -- [read more](https://github.com/dnnsoftware/Dnn.Platform/discussions/4295)
 
-The good news is that you only have to make sure that your web config has the proper 
-binding redirects and codebase sections in place for the Newtonsoft assembly and 
-then you should be fine.  The entry we use is as follows:
+How's that for a confidence builder? 
+
+The good news is that DNN will update it's Newtonsoft dependency soon and  
+the only real pitfall here is that after ***every DNN upgrade*** the web config mods 
+must be re-applied.  At least until the version incompatabilities are resolved.
+
+***If you are using a 3rd party module with a Newtonsoft dependency that is >10.0.3 and <12.0.3 
+there exists the potential for a problem***  
+
+
+Performing a module reinstall/repair will accomplish the changes needed in the web config 
+and it's an unavoidable task for DNN admins after any upgrade until v10 arrives. 
+
+Devs should be expecting their web config after an OS_Square install to look as follows:
 
 ```
-<!-- Changed manually for OS_Square -->
 <dependentAssembly xmlns="urn:schemas-microsoft-com:asm.v1">
    <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
-   <bindingRedirect oldVersion="0.0.0.0-10.0.3.32767" newVersion="10.0.3.0" />
+   <bindingRedirect oldVersion="0.0.0.0-10.0.3.32767" newVersion="10.0.0.0" />
    <bindingRedirect oldVersion="10.0.4.0-32767.32767.32767.32767" newVersion="12.0.0.0" />
    <codeBase version="12.0.0.0" href="bin\NewtonSoft.Json\V12\Newtonsoft.Json.dll" />
-   <codeBase version="10.0.3.0" href="bin\Newtonsoft.Json.dll" />
+   <codeBase version="10.0.0.0" href="bin\Newtonsoft.Json.dll" />
 </dependentAssembly>
 ```
 
-That should be it.  You should make sure your installation works with the config changes 
-before even trying to install the module.
+The module installation will also place the Newtonsoft.Json v12.0.3 library into the proper 
+directory which will match up with the v12 directory specified in the web config.
 
-Restart your DNN application and hold your breath.  Are we Iree?
-
-The scary part is over.
-
-The module installation will place the v12 version into the proper directory 
-which will match up with the manual changes we performed on the web config.  
-
-We expect DNN 10 to update Newtonsoft.Json dependency and at that point we should be able 
-to simplify the install.  ***DNN upgrades may overwrite the config changes that 
-OS_Square needs in order to work*** which would require re-applying the bindingRedirect 
-and codeBase changes.
 
 
 ### Installing
@@ -60,7 +59,7 @@ inputs.  It's required for encrypting your Square Application Id and Access Toki
 
 
 
-3.  See Square's [developers](https://developer.squareup.com/) portal for your Application ID & Access Token.
+3. See Square's [developers](https://developer.squareup.com/) portal for your Application ID & Access Token.
 
 
 
@@ -115,26 +114,45 @@ payment form during your OpenStore checkout process.
  * Square v6.5.0.0
  * NewtonSoft v12 
  
- Note: The DNN default install does not have a high enough(i502 accidental pun)
+ Note: Currently the DNN default install does not have a high enough(i502 accidental pun)
  version of Newtonsoft.Json for the Square lib to work. Therefore the module installation 
- will create a bin/Newtonsoft.Json/v12 directory. There is no sql provider with this module 
- install but it's still best to ***follow best practice and back up both 
- your db & file system before installing***.  
+ will create a bin/Newtonsoft.Json/v12 directory and update the web.config to include 
+ the binding redirects that enable the Square library to locate it. There is no sql 
+ provider with this module install but still *follow best practice and back up both 
+ your db & file system before installing*.  
 
+ 
+It's expected DNN 10 to update it's Newtonsoft.Json dependency and at that point we should be able 
+to simplify the install.  In the meantime ***DNN upgrades will overwrite the config changes that 
+OS_Square needs in order to work*** which requires re-installing/repairing the OS_Square module 
+or your payments will fail.  This is unavoidable until the dependency incompatabilities are resolved.
+
+
+Devs should be expecting their web config after an OS_Square install to look as follows:
+
+```
+<dependentAssembly xmlns="urn:schemas-microsoft-com:asm.v1">
+   <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
+   <bindingRedirect oldVersion="0.0.0.0-10.0.3.32767" newVersion="10.0.0.0" />
+   <bindingRedirect oldVersion="10.0.4.0-32767.32767.32767.32767" newVersion="12.0.0.0" />
+   <codeBase version="12.0.0.0" href="bin\NewtonSoft.Json\V12\Newtonsoft.Json.dll" />
+   <codeBase version="10.0.0.0" href="bin\Newtonsoft.Json.dll" />
+</dependentAssembly>
+```
 
 
 ## History
 This module is the evolution of an earlier version that worked with the NBStore system 
-before it's name change to OpenStore. The v2 version of this plugin began when 
+before it\'s name change to OpenStore. The v2 version of this plugin began when 
 breaking changes from Square.Connect 2.25 were mitigated. v3 represents the migration 
-from the deprecated Square.Connect library to it's successor, the Square library 
-which is currently at v6.5. 
+from the deprecated Square.Connect library to Square library which is currently at v6.5. 
 
 This current version 3.0.1-rc is to allow for some testing, feedback particularly 
 on foreign currencies, and for smoke testing(i502 technical pun) for 
-case scenarios that may have been overlooked or weren't relevant to our initial goals.  
+case scenarios that may have been overlooked or were not relevant to our initial goals.  
 The plugin provides support for USD, AUD, GBP, CAD and JPY currencies.  You can set 
-your currency code from the OS Back Office.  v3.0.1-rc is the first public release.
+your currency code from the OS Back Office.  v3.0.1-rc is the first public release.  
+
 
 
 ## Authors
@@ -149,5 +167,5 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 * All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & [OpenStore]( https://github.com/openstore-ecommerce/OpenStore) 
 
 ## Contribute
- Don't bogart the code(i502 forced pun). Pass it around(i502 double down, last one I promise). You can create an issue or submit a pull request
+ Don't bogart the code(i502 forced pun). Pass it around(i502 double down, last one I promise). You can create an issue or submit a pull request 
  to help make the plugin work better.
