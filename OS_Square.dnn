@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
-		<package name="OS_Square" type="Module" version="3.0.0">
+		<package name="OS_Square" type="Module" version="3.0.1">
 			<friendlyName>OS_Square</friendlyName>
 			<description>OS_Square is a Square payment provider for Open Store</description>
       <iconFile>~/desktopmodules/i502Club/OS_Square/themes/config/img/icon_extension.png</iconFile>
@@ -62,19 +62,22 @@
             <install>
               <configuration>
                 <nodes>
-                  <node path="/configuration/runtime/ab:assemblyBinding/ab:dependentAssembly[ab:assemblyIdentity/@name='Newtonsoft.Json']" 
+                  <node path="/configuration/runtime/ab:assemblyBinding" 
                         action="update" 
-                        targetpath="/configuration/runtime/ab:assemblyBinding/ab:dependentAssembly[ab:assemblyIdentity/@name='Newtonsoft.Json']/ab:bindingRedirect" 
+                        targetpath="/configuration/runtime/ab:assemblyBinding/ab:dependentAssembly[ab:assemblyIdentity/@name='Newtonsoft.Json']" 
                         nameSpace="urn:schemas-microsoft-com:asm.v1" 
                         nameSpacePrefix="ab" 
                         collision="save">
                     <!--Updated by OS_Square 
                      version 10 is required by current release of DNN 9.7.2 
                      version 12 is required by Square v6.5-->
-                    <bindingRedirect oldVersion="1.0.0.0-10.0.3.32767" newVersion="10.0.3.0" />
-                    <bindingRedirect oldVersion="10.0.4.0-32767.32767.32767.32767" newVersion="12.0.0.0" />
-                    <codeBase version="12.0.0.0" href="bin\NewtonSoft.Json\V12\Newtonsoft.Json.dll" />
-                    <codeBase version="10.0.3.0" href="bin\Newtonsoft.Json.dll" />
+                    <dependentAssembly xmlns="urn:schemas-microsoft-com:asm.v1">
+                      <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
+                      <bindingRedirect oldVersion="1.0.0.0-10.0.3.32767" newVersion="10.0.0.0" />
+                      <bindingRedirect oldVersion="10.0.4.0-32767.32767.32767.32767" newVersion="12.0.0.0" />
+                      <codeBase version="12.0.0.0" href="bin\NewtonSoft.Json\V12\Newtonsoft.Json.dll" />
+                      <codeBase version="10.0.0.0" href="bin\Newtonsoft.Json.dll" />
+                    </dependentAssembly>
                   </node>
                 </nodes>
               </configuration>
