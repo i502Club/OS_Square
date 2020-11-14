@@ -20,7 +20,7 @@
 	   <li>Manifest changes</li>
 	   <li>Update license</li>
 	   <li>Remove Square.Connect</li>
-	   <li>Remove di copy tasks and manifest entries</li>
+	   <li>Remove copy tasks and manifest entries</li>
 	   <li>Enable post build copy events</li>
 	   <li>Fix img name</li>
 	   <li>Add images to proj</li>
