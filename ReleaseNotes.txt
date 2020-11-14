@@ -9,9 +9,26 @@
 <div class="License">
 	<h3>About OS Square</h3>
 	<p class="Owner">
-		<b>Version 3.0.0</b><br /><br />
+		<b>Version 3.0.1</b><br /><br />
 	</p>
 	<p>Payment provider module for Open Store to enable Square Credit Card Payments.</p><br />
+	<h4>Version 3.0.1</h4>
+	<ul>
+	   <li>updated manifest config component</li>
+	   <li>update readme</li>
+	   <li>updated proj refs</li>
+	   <li>Manifest changes</li>
+	   <li>Update license</li>
+	   <li>Remove Square.Connect</li>
+	   <li>Remove di copy tasks and manifest entries</li>
+	   <li>Enable post build copy events</li>
+	   <li>Fix img name</li>
+	   <li>Add images to proj</li>
+	   <li>Enforce location name match in GetLocation. Return Location versus id from GetLocation</li>
+	   <li>Add images</li>
+	   <li>Add os logo img</li>
+	</ul>
+	<hr />
 	<h4>Version 3.0.0</h4>
 	<ul>
 		<li>Refactored for Square v6.5</li>
