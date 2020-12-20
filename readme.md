@@ -19,11 +19,10 @@ have major impacts to DNN functionality*** -- [read more](https://github.com/dnn
 How's that for a confidence builder?
 
 The good news is that DNN will update it's Newtonsoft dependency soon and the only real 
-pitfall here is that after ***every DNN upgrade*** the web config mods must be re-applied.  
-At least until the version incompatabilities are resolved.
+pitfall here is that after ***every DNN upgrade*** the web config mods must be re-applied. 
 
 Performing a module reinstall/repair will accomplish the changes needed in the web config 
-and it's a required task for DNN admins after any upgrade until v10 arrives. 
+and it's a required task for DNN admins after any platform upgrade until v10 arrives. 
 
 ***If you are using a 3rd party module with a Newtonsoft dependency that is >10.0.3 and <12.0.3 
 there exists the potential for a problem***  You should test in a non production environment 
@@ -44,7 +43,7 @@ Devs should be expecting their web config after an OS_Square install to look as 
 
 The module installation will also place the Newtonsoft.Json v12.0.3 library into the proper 
 directory which will match up with the v12 directory specified in the web config. (NOTE: If you 
-prefer you can use the v2.5.5.1 tag to compile a version of this provider that uses the 
+prefer you can use the v2.0.5.1 tag to compile a version of this provider that uses the 
 deprecated Square.Connect library and does not make web.config changes but it won't see 
 future updates either.)
 
@@ -101,7 +100,7 @@ payment form during your OpenStore checkout process.
 
 ### Development
  1. Backup your db and DNN site.  Install the module into your development enviroment.
- 2. Clone(i502 low hanging pun fruit) the repo to your /DesktopModules/i502Club/ directory.
+ 2. Clone the repo to your /DesktopModules/i502Club/ directory.
  2. Your development environment IIS server must bind your DNN site to localhost 
 	otherwise the payment form & Square assembly will not work using the sandbox.  
  3. See the [Square](https://developer.squareup.com/) developer portal for your Application ID, Access Token and test cc card information.
@@ -118,7 +117,7 @@ payment form during your OpenStore checkout process.
  * Square v6.5.0.0
  * NewtonSoft v12 
  
- Note: There is no sql provider with this module install but it's best to still *follow best practice and back up both 
+ There is no sql provider with this module install but it's best to still *follow best practice and back up both 
  your db & file system before installing*.  
 
  
@@ -155,5 +154,4 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 * All the contributors to [DNN](https://github.com/dnnsoftware/Dnn.Platform) & [OpenStore]( https://github.com/openstore-ecommerce/OpenStore) 
 
 ## Contribute
- Don't bogart the code(i502 forced pun). Pass it around(i502 double down). You can create an issue or submit a pull request 
- to help make the plugin work better.
+You can create an issue or submit a pull request to help make the plugin work better.
