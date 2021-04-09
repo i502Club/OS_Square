@@ -18,11 +18,8 @@ have major impacts to DNN functionality*** -- [read more](https://github.com/dnn
 
 How's that for a confidence builder?
 
-The good news is that DNN will update it's Newtonsoft dependency soon and the only real 
-pitfall here is that after ***every DNN upgrade*** the web config mods must be re-applied. 
-
-Performing a module reinstall/repair will accomplish the changes needed in the web config 
-and it's a required task for DNN admins after any platform upgrade until v10 arrives. 
+The good news is that DNN will update it's Newtonsoft dependency soon at which point the 
+web config modifications won't be required. 
 
 ***If you are using a 3rd party module with a Newtonsoft dependency that is >10.0.3 and <12.0.3 
 there exists the potential for a problem***  You should test in a non production environment 
@@ -85,7 +82,7 @@ error***
 
 
 7. Select the sandbox mode when you are testing against your sandbox account.  Uncheck this 
-box when you are ready to send requests to your actual Square account.  ***You must have  
+box when you are ready to send requests to your actual Square account.  ***You must have 
 IIS bound to localhost for testing***.  Urls such as dnndev.me or dnn.local won't work.  Your 
 production server must be using https.
 
@@ -122,9 +119,7 @@ payment form during your OpenStore checkout process.
 
  
 It's expected that the DNN 10 update will also include an upgrade to it's Newtonsoft.Json dependency 
-and at that point we should be able to simplify the install.  In the meantime ***DNN upgrades will overwrite the config changes that 
-OS_Square needs in order to work*** which requires re-installing/repairing the OS_Square module 
-or your payments will fail.  This is unavoidable until the dependency incompatabilities are resolved.
+and at that point we should be able to simplify the install.
 
 
 
@@ -134,11 +129,8 @@ before it's name change to OpenStore. The v2 version of this plugin began when
 breaking changes from Square.Connect 2.25 were mitigated. v3 represents the migration 
 from the deprecated Square.Connect library to Square library which is currently at v6.5. 
 
-This pre-release version 3.0.2 is to allow for some testing, feedback particularly 
-on foreign currencies, and for smoke testing(i502 technical pun) for 
-case scenarios that may have been overlooked or were not relevant to our initial goals.  
 The plugin provides support for USD, AUD, GBP, CAD and JPY currencies.  You can set 
-your currency code from the OS Back Office.  v3.0.2 is the first public release.
+your currency code from the OS Back Office.  v3.0.2 was the first public release.
 
 
 
