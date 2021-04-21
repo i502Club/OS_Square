@@ -280,7 +280,6 @@
     <Content Include="Themes\config\img\logo.png" />
     <Content Include="Themes\config\img\square-pay.png" />
     <Content Include="Themes\config\js\os_square.js" />
-    <None Include="app.config" />
     <None Include="assets\images\cc_form.pdn" />
     <None Include="assets\images\flags.pdn" />
     <None Include="assets\images\plugin_installed.pdn" />
