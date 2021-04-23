@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("i502 Club")]
 [assembly: AssemblyProduct("OS_Square")]
-[assembly: AssemblyCopyright("Copyright © 2020")]
+[assembly: AssemblyCopyright("Copyright © 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,4 +19,4 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("046f4169-8d4e-44f9-99fa-2250be352a70")]
 
-[assembly: AssemblyVersion("3.0.2.*")]
+[assembly: AssemblyVersion("3.1.0.*")]

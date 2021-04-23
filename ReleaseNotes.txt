@@ -9,9 +9,18 @@
 <div class="License">
 	<h3>About OS Square</h3>
 	<p class="Owner">
-		<b>Version 3.0.2</b><br /><br />
+		<b>Version 3.1.0</b><br /><br />
 	</p>
 	<p>Payment provider module for Open Store to enable Square Credit Card Payments.</p><br />
+	<h4>Version 3.1.0</h4>
+	<ul>
+		<li>Implement Square v10.0.0</li>
+		<li>Build changes</li>
+		<li>Update package refs</li>
+		<li>Add settings resx</li>
+		<li>Update readme</li>
+	</ul>
+	<hr />
 	<h4>Version 3.0.2</h4>
 	<ul>
 	   <li>readme updates</li>
