@@ -61,8 +61,11 @@
     <Copy SourceFiles="@(PackageTxtFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
     <Copy SourceFiles="@(PluginFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
     
-    <!-- Square library-->
+    <!-- Square library and it's dependencies -->
     <Copy SourceFiles="$(MSBuildDnnBinPath)\Square.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\Polly.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\System.Collections.Immutable.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
+    <Copy SourceFiles="$(MSBuildDnnBinPath)\System.ValueTuple.dll" DestinationFolder="$(MSBuildProjectDirectory)\Package\bin"/>
     
     <!-- Create Directory for v12 of Newtonsoft.Json -->
     <!-- Currently DNN is using v10.0.3 which wont work with the Square lib -->
