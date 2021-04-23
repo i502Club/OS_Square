@@ -111,8 +111,11 @@ payment form during your OpenStore checkout process.
 
 ### Dependencies
 
- * Square v6.5.0.0
+ * Square v10.0.0
  * NewtonSoft v12 
+ * Polly v7
+ * System.Collections.Immutable
+ * System.ValueTuple
  
  There is no sql provider with this module install but it's best to still *follow best practice and back up both 
  your db & file system before installing*.  
