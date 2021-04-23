@@ -160,7 +160,6 @@
     <None Include="assets\images\flags.pdn" />
     <None Include="assets\images\plugin_installed.pdn" />
     <None Include="assets\images\settings.pdn" />
-    <None Include="BuildScripts\build.bat_deprecated" />
     <None Include="BuildScripts\ModulePackage.targets" />
     <None Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
     <None Include="OS_Square.dnn" />
