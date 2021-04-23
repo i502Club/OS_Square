@@ -42,7 +42,21 @@
             <assembly>
               <path>bin</path>
               <name>Square.dll</name>
-              <version>06.05.00</version>
+              <version>10.00.00</version>
+            </assembly>
+            <assembly>
+              <path>bin</path>
+              <name>System.Collections.Immutable.dll</name>
+              <version>05.00.20</version>
+            </assembly>
+            <assembly>
+              <path>bin</path>
+              <name>Polly.dll</name>
+              <version>07.02.02</version>
+            </assembly>
+            <assembly>
+              <path>bin</path>
+              <name>System.ValueTuple.dll</name>
             </assembly>
 					</assemblies>
 				</component>
