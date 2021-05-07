@@ -8,7 +8,7 @@ have a valid Square account and a [developers](https://developer.squareup.com/)
 api key for this provider to work.
 
 ### About the Install
-The current version of DNN depends on Newtonsoft.Json v10.0.3 and Square v6.5 depends on 
+The current version of DNN depends on Newtonsoft.Json v10.0.3 and Square v10.0.0 depends on 
 Newtonsoft.Json 12+.  You cannot overwrite the version which DNN depends on without errors 
 therefore this module install updates the web config with binding redirects to support 
 side by side versions of Newtonsoft.
