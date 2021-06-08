@@ -168,8 +168,6 @@
     <Content Include="assets\images\sq-web-payment.png" />
     <Content Include="Themes\config\img\square-pay.png" />
     <Content Include="Themes\config\js\os_square.js" />
-    <None Include=".env.example" />
-    <None Include="app.config" />
     <None Include="assets\images\cc_form.pdn" />
     <None Include="assets\images\flags.pdn" />
     <None Include="assets\images\plugin_installed.pdn" />

@@ -130,12 +130,12 @@ and at that point we should be able to simplify the install.
 This module is the evolution of an earlier version that worked with the NBStore system 
 before it's name change to OpenStore. The v2 version of this plugin began when breaking changes from 
 Square.Connect 2.25 were mitigated. v3 represents the migration from the deprecated 
-Square.Connect library to Square library. v4 reflects the implementation of the web payment sdk 
+Square.Connect library to Square library. v4 reflects the implementation of the web payments sdk 
 versus the square payment form.
 
 The plugin provides support for USD, AUD, GBP, CAD and JPY currencies.  You can set 
 your currency code from the OS Back Office.  v3.0.2 was the first public pre release. 
-v3.1.2 is the last release that implements the square payment form.
+v3.1.2 was the last release that implemented the square payment form.
 
 
 
