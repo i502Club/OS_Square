@@ -134,7 +134,8 @@ Square.Connect library to Square library. v4 reflects the implementation of the 
 versus the square payment form.
 
 The plugin provides support for USD, AUD, GBP, CAD and JPY currencies.  You can set 
-your currency code from the OS Back Office.  v3.0.2 was the first public release.
+your currency code from the OS Back Office.  v3.0.2 was the first public pre release. 
+v3.1.2 is the last release that implements the square payment form.
 
 
 
