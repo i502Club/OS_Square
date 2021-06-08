@@ -133,7 +133,8 @@ breaking changes from Square.Connect 2.25 were mitigated. v3 represents the migr
 from the deprecated Square.Connect library to Square library which is currently at v6.5. 
 
 The plugin provides support for USD, AUD, GBP, CAD and JPY currencies.  You can set 
-your currency code from the OS Back Office.  v3.0.2 was the first public release.
+your currency code from the OS Back Office.  v3.0.2 was the first public pre release. 
+v3.1.2 is the last release that implements the square payment form.
 
 
 
