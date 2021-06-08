@@ -91,7 +91,7 @@ production server must be using https.
 *Congratulations*! The gateway should now be ready and your customers can purchase securely with the Square 
 payment form during your OpenStore checkout process.
 
-![Square payment form](assets/images/cc_form.png)
+![Square payment form](assets/images/sq-web-payment.png)
 
 ---
 
@@ -111,9 +111,9 @@ payment form during your OpenStore checkout process.
 
 ### Dependencies
 
- * Square v10.0.0
+ * Square v11.0.0
  * NewtonSoft v12 
- * Polly v7
+ * Polly >=v7.2.1 
  * System.Collections.Immutable
  * System.ValueTuple
  
@@ -128,9 +128,10 @@ and at that point we should be able to simplify the install.
 
 ## History
 This module is the evolution of an earlier version that worked with the NBStore system 
-before it's name change to OpenStore. The v2 version of this plugin began when 
-breaking changes from Square.Connect 2.25 were mitigated. v3 represents the migration 
-from the deprecated Square.Connect library to Square library which is currently at v6.5. 
+before it's name change to OpenStore. The v2 version of this plugin began when breaking changes from 
+Square.Connect 2.25 were mitigated. v3 represents the migration from the deprecated 
+Square.Connect library to Square library. v4 reflects the implementation of the web payment sdk 
+versus the square payment form.
 
 The plugin provides support for USD, AUD, GBP, CAD and JPY currencies.  You can set 
 your currency code from the OS Back Office.  v3.0.2 was the first public release.
