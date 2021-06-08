@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
-		<package name="OS_Square" type="Module" version="3.1.1">
+		<package name="OS_Square" type="Module" version="3.1.2">
 			<friendlyName>OS_Square</friendlyName>
 			<description>OS_Square is a Square payment provider for Open Store</description>
       <iconFile>~/desktopmodules/i502Club/OS_Square/themes/config/img/icon_extension.png</iconFile>
