@@ -196,7 +196,8 @@ else
                         required="required"
                         placeholder="Given Name"
                         name="givenName"
-                        spellcheck="false" />
+                        spellcheck="false"
+                        class="@info.GetXmlProperty("genxml/textbox/achcssclass")"/>
 
                 <input type="text"
                         autocomplete="family-name"
@@ -205,7 +206,8 @@ else
                         required="required"
                         placeholder="Family Name"
                         name="familyName"
-                        spellcheck="false" />
+                        spellcheck="false" 
+                        class="@info.GetXmlProperty("genxml/textbox/achcssclass")"/>
             </fieldset>
             <button id="ach-button" class="paybutton primarybutton">@info.GetXmlProperty("genxml/lang/genxml/textbox/buttontext")</button>
             }

@@ -66,6 +66,15 @@ var info = (NBrightInfo)Model.List.First();
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">@ResourceKey("Settings.AchCssClass")</label>
+            <div class="col-sm-2">
+                @TextBox(info, "genxml/textbox/achcssclass", "class='form-control'", "form-control")
+            </div>
+            <label>
+                @ResourceKey("Settings.AchCssClassInfo")
+            </label>
+        </div>
     </div>
     <div class="row">
         <div class="form-group">

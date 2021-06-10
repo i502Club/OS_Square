@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AchCssClass.Text" xml:space="preserve">
+    <value>ACH CSS Class</value>
+  </data>
+  <data name="AchCssClassInfo.Text" xml:space="preserve">
+    <value>Enter a custom CSS class that gets applied to the ACH form input elements.</value>
+  </data>
   <data name="LocationNameLabel.Text" xml:space="preserve">
     <value>Enter the name for the location you would like to associate with credit card payments.  Leave blank and the payment provider will use the first location it retrieves from results returned by Square's Api list locations end point.</value>
   </data>
@@ -127,9 +133,9 @@
     <value>OS_Square Payment</value>
   </data>
   <data name="ShowAch.Text" xml:space="preserve">
-    <value>Show Ach Form</value>
+    <value>Show ACH Form</value>
   </data>
   <data name="ShowAchInfo.Text" xml:space="preserve">
-    <value>Check to enable the ach transfer form.  Note this option is only available in US at at this time.  It will render the ach form in addition to the CC form.  You must have a location entered for the ach payment requests to initialize properly.</value>
+    <value>Check to enable the ACH transfer form.  Note this option is only available in US at at this time.  It will render the ACH form in addition to the CC form.  You must have a location entered for the ACH payment requests to initialize properly.</value>
   </data>
 </root>

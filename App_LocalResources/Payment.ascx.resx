@@ -195,4 +195,7 @@
   <data name="SquareAchFormTitle.Text" xml:space="preserve">
     <value>Pay with Bank Account</value>
   </data>
+  <data name="AchCssClass.Text" xml:space="preserve">
+    <value>ACH CSS Class</value>
+  </data>
 </root>
