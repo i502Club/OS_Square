@@ -3,12 +3,18 @@
 }
 
 #card-container {
-    padding: .5em;
+    padding: 0 .2em .5em 0em;
 }
 
 #sq-container a.paybutton {
     width: 120px;
 }
+
+#sq-container .buyer-inputs input{
+    margin: .5em .2em;
+}
+
+#ach-button {margin-bottom:3em;}
 
 @media only screen and (min-width: 410px) {
     #sq-container h3, #sq-container div.defaultmessage {

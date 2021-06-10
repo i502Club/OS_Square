@@ -154,6 +154,7 @@
     <Content Include="assets\images\os_logo_150X29.png" />
     <Content Include="assets\images\plugin_installed.png" />
     <Content Include="assets\images\settings.png" />
+    <Content Include="assets\images\sq-web-payments.png" />
     <Content Include="assets\images\square-logo.png" />
     <Content Include="Installation\pluginOS_Square.xml" />
     <Content Include="License.txt" />
@@ -165,7 +166,6 @@
     <Content Include="Themes\config\css\ossquare.css" />
     <Content Include="Themes\config\img\icon_extension.png" />
     <Content Include="Themes\config\img\logo.png" />
-    <Content Include="assets\images\sq-web-payment.png" />
     <Content Include="Themes\config\img\square-pay.png" />
     <Content Include="Themes\config\js\os_square.js" />
     <None Include="assets\images\cc_form.pdn" />

@@ -192,4 +192,7 @@
   <data name="SquarePostalCode.Text" xml:space="preserve">
     <value>Zip</value>
   </data>
+  <data name="SquareAchFormTitle.Text" xml:space="preserve">
+    <value>Pay with Bank Account</value>
+  </data>
 </root>

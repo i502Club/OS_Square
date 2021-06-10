@@ -3,12 +3,12 @@ A DNN OpenStore payment provider plugin
 
 ## Getting Started
 This is a payment provider plugin for [![OpenStore Ecommerce](assets/images/os_logo_150X29.png)](https://www.openstore-ecommerce.com/en-gb/OpenStore). It will enable any 
-DNN 9.4+ site running OpenStore to accept CC payments into their [Square](https://squareup.com/) account.  You must 
+DNN 9.4+ site running OpenStore to accept CC and ACH payments into their [Square](https://squareup.com/) account.  You must 
 have a valid Square account and a [developers](https://developer.squareup.com/) 
 api key for this provider to work.
 
 ### About the Install
-The current version of DNN depends on Newtonsoft.Json v10.0.3 and Square v10.0.0 depends on 
+The current version of DNN depends on Newtonsoft.Json v10.0.3 and Square v11.0.0 depends on 
 Newtonsoft.Json 12+.  You cannot overwrite the version which DNN depends on without errors 
 therefore this module install updates the web config with binding redirects to support 
 side by side versions of Newtonsoft.
@@ -88,10 +88,10 @@ production server must be using https.
 
 ---
 
-*Congratulations*! The gateway should now be ready and your customers can purchase securely with the Square 
-payment form during your OpenStore checkout process.
+*Congratulations*! The gateway should now be ready and your customers can purchase securely with Square 
+using both CC and ACH payments(US only) during your OpenStore checkout process.
 
-![Square payment form](assets/images/sq-web-payment.png)
+![Square payment form](assets/images/sq-web-payments.png)
 
 ---
 
@@ -130,7 +130,7 @@ and at that point we should be able to simplify the install.
 This module is the evolution of an earlier version that worked with the NBStore system 
 before it's name change to OpenStore. The v2 version of this plugin began when breaking changes from 
 Square.Connect 2.25 were mitigated. v3 represents the migration from the deprecated 
-Square.Connect library to Square library. v4 reflects the implementation of the web payments sdk 
+Square.Connect library to Square library. v3.2 reflects the implementation of the web payments sdk 
 versus the square payment form.
 
 The plugin provides support for USD, AUD, GBP, CAD and JPY currencies.  You can set 
@@ -142,7 +142,8 @@ v3.1.2 was the last release that implemented the square payment form.
 ## Authors
 [![i502 Club](assets/images/icon_extension.png)](https://www.i502.club) [i502 Club](https://www.i502.club)
 
-This project was built using templates provided for the OpenStore community by it's creator David Lee. Disons merci.
+This project was built using templates provided for the OpenStore community by it's creator David Lee. It also 
+uses code from the examples which can be found on the Square developers portal.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details

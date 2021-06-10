@@ -39,7 +39,7 @@ namespace OS_Square
             try
             {
                 var nonce = HttpContext.Current.Request.Cookies.Get("nonce") != null ? HttpContext.Current.Request.Cookies.Get("nonce").Value : "";
-                
+
                 if (string.IsNullOrWhiteSpace(nonce))
                 {
                     HttpContext.Current.Request.Cookies.Get("nonce").Expires = DateTime.Now.AddDays(-1d);
@@ -63,10 +63,44 @@ namespace OS_Square
                     
                     if (response.Errors == null || response.Errors.Count == 0)
                     {
+                        //add external order id, payment id & status to PurchaseInfo for dev reference
+                        orderData.PurchaseInfo.SetXmlProperty("genxml/externalorderid", response.Payment.OrderId);
+                        orderData.PurchaseInfo.SetXmlProperty("genxml/externalpaymentid", response.Payment.Id);
+                        orderData.PurchaseInfo.SetXmlProperty("genxml/externalstatus", response.Payment.Status);
+                        
+                        //also add the Square payment id to the audit log for admins/managers to reference
+                        orderData.AddAuditMessage("Square Payment ID " + response.Payment.Id, "notes", UserController.Instance.GetCurrentUserInfo().Username, "False");
+
                         // successful transaction
-                        orderData.OrderStatus = "040";
-                        orderData.PaymentOk("040");
-                        param[1] = "status=1";
+                        if (response.Payment.SourceType == "BANK_ACCOUNT")
+                        {
+                            if (response.Payment.Status == "PENDING") {
+                                //ACH payments can take 3-5 days to clear
+                                //so set the status to Payment Not Verified 050
+                                //and add an audit log entry for the Pending ACH Transfer
+
+                                orderData.AddAuditMessage("Pending ACH Transfer", "notes", UserController.Instance.GetCurrentUserInfo().Username, "False");
+                                orderData.PaymentOk("050");
+                                param[1] = "status=1";
+                            }
+                            else{
+                                //ACH payments should not end up here
+                                //since all payments will intially
+                                //return a PENDING status                                
+                                orderData.OrderStatus = "030";
+                                param[1] = "status=0";
+                                orderData.AddAuditMessage("Unhandled payment status", "notes", UserController.Instance.GetCurrentUserInfo().Username, "False");
+
+                                throw new Exception("Unhandled payment status");
+                            }
+
+                        }
+                        else 
+                        {
+                            // cc payments
+                            orderData.PaymentOk("040");
+                            param[1] = "status=1";
+                        }
 
                         NBrightBuyUtils.SendOrderEmail("OrderCreatedClient", orderData.PurchaseInfo.ItemID, "ordercreatedemailsubject");
 

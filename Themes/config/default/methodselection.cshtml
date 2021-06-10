@@ -13,14 +13,17 @@
     var info = (NBrightInfo)Model.List.First();
 }
 
-@{ 
+@{
     var sandboxmode = info.GetXmlPropertyBool("genxml/checkbox/sandboxmode");
+    var showAch = info.GetXmlPropertyBool("genxml/checkbox/showach");
 }
-@if(sandboxmode){
-<script type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
+@if (sandboxmode)
+{
+    <script type="text/javascript" src="https://sandbox.web.squarecdn.com/v1/square.js"></script>
 }
-else {
- <script type="text/javascript" src="https://web.squarecdn.com/v1/square.js"></script>   
+else
+{
+    <script type="text/javascript" src="https://web.squarecdn.com/v1/square.js"></script>
 }
 
 <script type="text/javascript" src="/DesktopModules/i502Club/OS_Square/themes/config/js/jquery.cookie.min.js"></script>
@@ -37,6 +40,15 @@ else {
             return card;
         }
 
+        @if (showAch) {<text>
+        async function initializeACH(payments) {
+            const ach = await payments.ach();
+            // Note: ACH does not have an .attach(...) method
+            // the ACH auth flow is triggered by .tokenize(...)
+            return ach;
+        }
+        </text>}
+
         document.addEventListener('DOMContentLoaded', async function () {
             if (!window.Square) {
                 throw new Error('Square.js failed to load properly');
@@ -50,26 +62,41 @@ else {
                 return;
             }
 
+            @if (showAch) {<text>
+            let ach;
+            try {
+                ach = await initializeACH(payments);
+            } catch (e) {
+                console.error('Initializing ACH failed', e);
+                return;
+            }
+            </text>}
+
             // create card payment
-            async function handlePaymentMethodSubmission(event, paymentMethod) {
+            async function handlePaymentMethodSubmission(event, paymentMethod, options) {
                 event.preventDefault();
+
+                //display OS loading spinner
+                $(".processingcheckout").show();
 
                 try {
                     // disable the submit button as we await tokenization and make a
                     // payment request.
                     cardButton.disabled = true;
-                    const token = await tokenize(paymentMethod);
+                    achButton.disabled = true;
+                    const token = await tokenize(paymentMethod, options);
 
                     // Setting a short lived cookie to pass the nonce token. It gets removed when the
                     // Square payment finishes and the user gets redirected.
                     var homeUrl = location.origin;
                     Cookies.set('nonce', token, { expires: 1/24, path: '/', domain: homeUrl.replace(location.protocol, "").replace("//", "").replace("/", "") });
 
-                    // Go to provider which creates the payment request 
+                    // Go to provider which creates the payment request
                     location.href = "?provider=@info.GetXmlProperty("genxml/hidden/ctrl")";
 
                 } catch (e) {
                     cardButton.disabled = false;
+                    achButton.disabled = false;
                     displayPaymentResults('FAILURE');
                     console.error(e.message);
                 }
@@ -82,8 +109,34 @@ else {
                 await handlePaymentMethodSubmission(event, card);
             });
 
+            @if (showAch) {<text>
+            const achButton = document.getElementById('ach-button');
+            achButton.addEventListener('click', async function (event) {
+                event.preventDefault();
+
+                const paymentForm = document.getElementById('Form');
+
+                // validate name inputs
+                if ($('input[name=givenName]').val().trim() == "") {
+                    alert("Given name required");
+                    $('input[name=givenName]').select();
+                    return false;
+                }
+
+                if ($('input[name=familyName]').val().trim() == "") {
+                    alert("Family name required");
+                    $('input[name=familyName]').select();
+                    return false;
+                }
+
+                const achOptions = getACHOptions(paymentForm);
+                await handlePaymentMethodSubmission(event, ach, achOptions);  // tokenize
+                // ACH with the `accountHolderName` as an option.
+            });
+            </text>}
+
             // If there is a cookie value for a nonce we'll erase it. Arriving on this page
-            // with a cookie means the transaction has been handled by RedirectForPayment 
+            // with a cookie means the transaction has been handled by RedirectForPayment
             // so we clear it.
             if ($.Cookie != null && $.Cookie("nonce") != "") {
                 $.Cookie("nonce", "");
@@ -96,8 +149,8 @@ else {
         // which is due to buyer error (such as an expired card). It is up to the
         // developer to handle the error and provide the buyer the chance to fix
         // their mistakes.
-        async function tokenize(paymentMethod) {
-            const tokenResult = await paymentMethod.tokenize();
+        async function tokenize(paymentMethod, options = {}) {
+            const tokenResult = await paymentMethod.tokenize(options);
             if (tokenResult.status === 'OK') {
                 return tokenResult.token;
             } else {
@@ -110,20 +163,58 @@ else {
                 throw new Error(errorMessage);
             }
         }
+        @if (showAch) {<text>
+        function getBillingContact(form) {
+            const formData = new FormData(form);
 
+            return {
+                givenName: formData.get('givenName'),
+                familyName: formData.get('familyName'),
+            };
+        }
+
+        function getACHOptions(form) {
+            const billingContact = getBillingContact(form);
+            const accountHolderName = `${billingContact.givenName} ${billingContact.familyName}`;
+
+            return { accountHolderName };
+        }
+        </text>}
     </script>
 
     <div id="sq-container">
         <div class="loading hidden">Loading&#8230;</div>
-        <h3>@ResourceKey("Payment.SquarePaymentFormTitle")</h3>
-
         <form id="payment-form">
+            @if (showAch)
+            {
+            <h3>@ResourceKey("Payment.SquareAchFormTitle")</h3>
+            <fieldset class="buyer-inputs">
+                <input type="text"
+                        autocomplete="given-name"
+                        aria-required="true"
+                        aria-label="First Name"
+                        required="required"
+                        placeholder="Given Name"
+                        name="givenName"
+                        spellcheck="false" />
+
+                <input type="text"
+                        autocomplete="family-name"
+                        aria-required="true"
+                        aria-label="Last Name"
+                        required="required"
+                        placeholder="Family Name"
+                        name="familyName"
+                        spellcheck="false" />
+            </fieldset>
+            <button id="ach-button" class="paybutton primarybutton">@info.GetXmlProperty("genxml/lang/genxml/textbox/buttontext")</button>
+            }
+            <h3>@ResourceKey("Payment.SquarePaymentFormTitle")</h3>
             <div id="card-container"></div>
             <img src="/DesktopModules/i502Club/OS_Square/Themes/config/img/square-pay.png" />
             <div class="defaultmessage">@info.GetXmlProperty("genxml/lang/genxml/textbox/message")</div>
             <button id="card-button" class="paybutton primarybutton" type="button">@info.GetXmlProperty("genxml/lang/genxml/textbox/buttontext")</button>
         </form>
-        <div id="payment-status-container"></div>
     </div>
     <hr />
 </div>

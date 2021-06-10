@@ -126,4 +126,10 @@
   <data name="SettingsBoxName.Text" xml:space="preserve">
     <value>OS_Square Payment</value>
   </data>
+  <data name="ShowAch.Text" xml:space="preserve">
+    <value>Show Ach Form</value>
+  </data>
+  <data name="ShowAchInfo.Text" xml:space="preserve">
+    <value>Check to enable the ach transfer form.  Note this option is only available in US at at this time.  It will render the ach form in addition to the CC form.  You must have a location entered for the ach payment requests to initialize properly.</value>
+  </data>
 </root>

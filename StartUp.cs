@@ -12,9 +12,6 @@ namespace OS_Square
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            //Not used but prepares this module for DI
-
-            //services.AddScoped<IPaymentService, SquarePaymentService>;
         }
     }
 }
