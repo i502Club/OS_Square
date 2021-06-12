@@ -1,8 +1,4 @@
-﻿using DotNetNuke.Abstractions.Portals;
-using DotNetNuke.Abstractions.Users;
-using DotNetNuke.Entities.Portals;
-using DotNetNuke.Entities.Users;
-using DotNetNuke.Services.Log.EventLog;
+﻿using DotNetNuke.Entities.Portals;
 using NBrightCore.common;
 using NBrightDNN;
 using Nevoweb.DNN.NBrightBuy.Components;
@@ -18,9 +14,6 @@ namespace OS_Square
         private static readonly string _locationId;
         private static readonly SquareClient _client;
         private static readonly NBrightInfo _settings;
-        private static readonly IEventLogController _objEventLog;
-        private static readonly IPortalSettings _portalSettings;
-        private static IUserInfo _userInfo;
 
         static ProviderUtils() {
             _settings = ProviderUtils.GetProviderSettings();
@@ -33,10 +26,6 @@ namespace OS_Square
             _client = new Square.SquareClient.Builder()
                     .Environment(env)
                     .AccessToken(accessToken).Build();
-
-            _objEventLog = new EventLogController();
-            _portalSettings = PortalController.Instance.GetCurrentSettings();
-            _userInfo = UserController.Instance.GetCurrentUserInfo();
             
             // Get the default location or an exact name match
             // as specified in the plugin settings
@@ -95,21 +84,8 @@ namespace OS_Square
             .Note(note)
             .Build();
 
-            try
-            {
-                var paymentsApi = _client.PaymentsApi;
-                var task = System.Threading.Tasks.Task.Run<CreatePaymentResponse>(async () => await paymentsApi.CreatePaymentAsync(body));
-                return task.Result;
-            }
-            catch (Exception ex)
-            {
-                _objEventLog.AddLog("OS_Square error", "Message : " + ex.Message, _portalSettings, _userInfo.UserID, EventLogController.EventLogType.ADMIN_ALERT);
-                orderData.AddAuditMessage(ex.Message, "notes", _userInfo.Username, "False");
-                
-                // swallowing errors that have been added to the event & audit logs
-            }
+            return _client.PaymentsApi.CreatePayment(body);
 
-            return null;
         }
 
         private static Location GetLocation(string squareLocationName)
@@ -126,18 +102,15 @@ namespace OS_Square
             // Set the default location to the 1st location
             var myLocation = locationList.Locations[0];
 
-            // Check if plugin settings have an location name that matches 
+            // Check if plugin settings have a location name that matches 
             // a name in the Square location list
             if (!string.IsNullOrWhiteSpace(squareLocationName)) {
                 myLocation = locationList.Locations.Where(x => x.Name.Equals(squareLocationName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
                 if (myLocation == null) {
 
-                    // Generate a log entry for the DNN admin
-                    _objEventLog.AddLog("OS_Square error", "OS_Square err Invalid Location Name: " + squareLocationName, _portalSettings, _userInfo.UserID, EventLogController.EventLogType.ADMIN_ALERT);
-
                     // Throw an error to avoid a user with multiple locations
                     // from accidently charging their default location.
-                    throw new Exception("Invalid Location Name. Charge aborted.");
+                    throw new Exception("Invalid Location Name. Charge aborted. Check plugin settings.");
                 }
             }
 
