@@ -68,12 +68,12 @@ var info = (NBrightInfo)Model.List.First();
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">@ResourceKey("Settings.AchCssClass")</label>
-            <div class="col-sm-2">
+            <div class="col-sm-5">
                 @TextBox(info, "genxml/textbox/achcssclass", "class='form-control'", "form-control")
+                <strong>
+                    @ResourceKey("Settings.AchCssClassInfo")
+                </strong>
             </div>
-            <label>
-                @ResourceKey("Settings.AchCssClassInfo")
-            </label>
         </div>
     </div>
     <div class="row">
@@ -145,9 +145,9 @@ var info = (NBrightInfo)Model.List.First();
             <label class="col-sm-2 control-label">Location Name</label>
             <div class="col-sm-5">
                 @TextBox(info, "genxml/textbox/locationname", "class='form-control' style='max-width:265px'", "")
-                <label for="locationname" class="dnnBoxLabel">
+                <strong>
                     @ResourceKey("Settings.LocationNameLabel")
-                </label>
+                </strong>
             </div>
             
         </div>
