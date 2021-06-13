@@ -162,4 +162,7 @@
   <data name="SquarePostalCode.Text" xml:space="preserve">
     <value>Code Postal</value>
   </data>
+  <data name="AchValidationMessage.Text" xml:space="preserve">
+    <value>Seuls les caractères alphabétiques, les apostrophes, les tirets, les points et les espaces sont autorisés</value>
+  </data>
 </root>

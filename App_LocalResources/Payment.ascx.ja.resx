@@ -177,4 +177,7 @@
   <data name="SandBoxMode.Text" xml:space="preserve">
     <value>サンドボックスモード</value>
   </data>
+  <data name="AchValidationMessage.Text" xml:space="preserve">
+    <value>アルファ、アポストロフィ、ハイフン、ピリオド、スペースのみが許可されます</value>
+  </data>
 </root>

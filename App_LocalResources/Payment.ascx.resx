@@ -198,4 +198,7 @@
   <data name="AchCssClass.Text" xml:space="preserve">
     <value>ACH CSS Class</value>
   </data>
+  <data name="AchValidationMessage.Text" xml:space="preserve">
+    <value>Only alpha, apostrophes, hyphens, periods and spaces are allowed</value>
+  </data>
 </root>

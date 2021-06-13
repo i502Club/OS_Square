@@ -86,18 +86,24 @@ else
                     achButton.disabled = true;
                     const token = await tokenize(paymentMethod, options);
 
-                    // Setting a short lived cookie to pass the nonce token. It gets removed when the
-                    // Square payment finishes and the user gets redirected.
-                    var homeUrl = location.origin;
-                    Cookies.set('nonce', token, { expires: 1/24, path: '/', domain: homeUrl.replace(location.protocol, "").replace("//", "").replace("/", "") });
+                    if (token) {
+                        // Setting a short lived cookie to pass the nonce token. It gets removed when the
+                        // Square payment finishes and the user gets redirected.
+                        var homeUrl = location.origin;
+                        Cookies.set('nonce', token, { expires: 1 / 24, path: '/', domain: homeUrl.replace(location.protocol, "").replace("//", "").replace("/", "") });
 
-                    // Go to provider which creates the payment request
-                    location.href = "?provider=@info.GetXmlProperty("genxml/hidden/ctrl")";
+                        // Go to provider which creates the payment request
+                        location.href = "?provider=@info.GetXmlProperty("genxml/hidden/ctrl")";
+                    }
+                    else {
+                        // If no token returned re-enable buttons
+                        achButton.disabled = false;
+                        cardButton.disabled = false;
+                    }
 
                 } catch (e) {
                     cardButton.disabled = false;
                     achButton.disabled = false;
-                    displayPaymentResults('FAILURE');
                     console.error(e.message);
                 }
             }
@@ -105,33 +111,57 @@ else
             const cardButton = document.getElementById(
                 'card-button'
             );
+
             cardButton.addEventListener('click', async function (event) {
                 await handlePaymentMethodSubmission(event, card);
             });
 
             @if (showAch) {<text>
+
             const achButton = document.getElementById('ach-button');
             achButton.addEventListener('click', async function (event) {
+
                 event.preventDefault();
 
                 const paymentForm = document.getElementById('Form');
 
-                // validate name inputs
-                if ($('input[name=givenName]').val().trim() == "") {
-                    alert("Given name required");
-                    $('input[name=givenName]').select();
+                // only allow ach name inputs with numbers, letters,
+                // periods, hyphens, apostrophes & spaces
+                const regex = /^[a-zA-Z.\-\'\s.+]+$/;
+                let msg = "@ResourceKey("Payment.AchValidationMessage")";
+
+                // validate ach name inputs
+                let $givenName = $('input[name=givenName]');
+                let givenName = $givenName.val().trim();
+                if (givenName == "") {
+                    $givenName.select();
                     return false;
                 }
+                else {
+                    if (!regex.test(givenName)) {
+                        $("#givenName-error").show().text(msg);
+                        $givenName.select();
+                        return false;
+                    }
+                }
 
-                if ($('input[name=familyName]').val().trim() == "") {
-                    alert("Family name required");
-                    $('input[name=familyName]').select();
+                let $familyName = $('input[name=familyName]');
+                let familyName = $familyName.val().trim();
+                if (familyName == "") {
+                    $familyName.select();
                     return false;
+                }
+                else {
+                    if (!regex.test(familyName)) {
+                        $("#familyName-error").show().text(msg);
+                        $familyName.select();
+                        return false;
+                    }
                 }
 
                 const achOptions = getACHOptions(paymentForm);
-                await handlePaymentMethodSubmission(event, ach, achOptions);  // tokenize
-                // ACH with the `accountHolderName` as an option.
+                await handlePaymentMethodSubmission(event, ach, achOptions);
+
             });
             </text>}
 
@@ -151,18 +181,23 @@ else
         // their mistakes.
         async function tokenize(paymentMethod, options = {}) {
             const tokenResult = await paymentMethod.tokenize(options);
+
             if (tokenResult.status === 'OK') {
                 return tokenResult.token;
             } else {
+                $(".processingcheckout").hide();
+
                 let errorMessage = `Tokenization failed-status: ${tokenResult.status}`;
                 if (tokenResult.errors) {
                     errorMessage += ` and errors: ${JSON.stringify(
                         tokenResult.errors
                     )}`;
                 }
+
                 throw new Error(errorMessage);
             }
         }
+
         @if (showAch) {<text>
         function getBillingContact(form) {
             const formData = new FormData(form);
@@ -187,29 +222,30 @@ else
         <form id="payment-form">
             @if (showAch)
             {
-            <h3>@ResourceKey("Payment.SquareAchFormTitle")</h3>
-            <fieldset class="buyer-inputs">
-                <input type="text"
-                        autocomplete="given-name"
-                        aria-required="true"
-                        aria-label="First Name"
-                        required="required"
-                        placeholder="Given Name"
-                        name="givenName"
-                        spellcheck="false"
-                        class="@info.GetXmlProperty("genxml/textbox/achcssclass")"/>
-
-                <input type="text"
-                        autocomplete="family-name"
-                        aria-required="true"
-                        aria-label="Last Name"
-                        required="required"
-                        placeholder="Family Name"
-                        name="familyName"
-                        spellcheck="false" 
-                        class="@info.GetXmlProperty("genxml/textbox/achcssclass")"/>
-            </fieldset>
-            <button id="ach-button" class="paybutton primarybutton">@info.GetXmlProperty("genxml/lang/genxml/textbox/buttontext")</button>
+                <h3>@ResourceKey("Payment.SquareAchFormTitle")</h3>
+                <fieldset class="buyer-inputs">
+                    <input type="text"
+                           autocomplete="given-name"
+                           aria-required="true"
+                           aria-label="First Name"
+                           required="required"
+                           placeholder="Given Name"
+                           name="givenName"
+                           spellcheck="false"
+                           class="@info.GetXmlProperty("genxml/textbox/achcssclass")" />
+                    <label id="givenName-error" class="error" for="givenName" style="display: none;"></label>
+                    <input type="text"
+                           autocomplete="family-name"
+                           aria-required="true"
+                           aria-label="Last Name"
+                           required="required"
+                           placeholder="Family Name"
+                           name="familyName"
+                           spellcheck="false"
+                           class="@info.GetXmlProperty("genxml/textbox/achcssclass")" />
+                    <label id="familyName-error" class="error" for="familyName" style="display: none;"></label>
+                </fieldset>
+                <button id="ach-button" class="paybutton primarybutton">@info.GetXmlProperty("genxml/lang/genxml/textbox/buttontext")</button>
             }
             <h3>@ResourceKey("Payment.SquarePaymentFormTitle")</h3>
             <div id="card-container"></div>
