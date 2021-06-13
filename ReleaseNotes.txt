@@ -5,13 +5,23 @@
 	<a href="https://www.i502.club">www.i502.club</a><br />
 </p>
 <hr/>
-
 <div class="License">
 	<h3>About OS Square</h3>
 	<p class="Owner">
-		<b>Version 3.2.0</b><br /><br />
+		<b>Version 3.2.1</b><br /><br />
 	</p>
 	<p>Payment provider module for Open Store to enable Square Credit Card Payments.</p><br />
+	<h4>Version 3.2.1</h4>
+	<ul>
+		<li>Implement ACH transfers</li>
+		<li>Add defensive token check</li>
+		<li>Add ach name input validation</li>
+		<li>Revert to provider logging</li>
+		<li>Use synchronous CreatePayment</li>
+		<li>Add setting for ACH form input class styling</li>
+		<li>Add custom css class support for ACH inputs</li>
+	</ul>
+	<hr />
 	<h4>Version 3.2.0</h4>
 	<ul>
 		<li>Implement web payments sdk</li>
