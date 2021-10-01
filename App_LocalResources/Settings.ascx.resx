@@ -123,6 +123,9 @@
   <data name="AchCssClassInfo.Text" xml:space="preserve">
     <value>Enter a custom CSS class that gets applied to the ACH form input elements.</value>
   </data>
+  <data name="CurrencyCodeLabel.Text" xml:space="preserve">
+    <value>Select a currency code.  EUR support is only in France and Ireland.</value>
+  </data>
   <data name="LocationNameLabel.Text" xml:space="preserve">
     <value>Enter the name for the location you would like to associate with credit card payments.  Leave blank and the payment provider will use the first location it retrieves from results returned by Square's Api list locations end point.</value>
   </data>

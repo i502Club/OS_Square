@@ -137,8 +137,11 @@ var info = (NBrightInfo)Model.List.First();
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Currency</label>
-            <div class="col-sm-2">
-                @DropDownList(info, "genxml/dropdownlist/currencycode", "USD,CAD,AUD,GBP,IRE,JPY", "USD,CAD,AUD,GBP,EUR,JPY", "class='form-control'")
+            <div class="col-sm-5">
+                @DropDownList(info, "genxml/dropdownlist/currencycode", "USD,CAD,AUD,EUR,GBP,JPY", "USD,CAD,AUD,EUR,GBP,JPY", "class='form-control' style='width:8em'")
+                <strong>
+                    @ResourceKey("Settings.CurrencyCodeLabel")
+                </strong>
             </div>
         </div>
         <div class="form-group">
