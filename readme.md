@@ -69,7 +69,7 @@ inputs.  It's required for encrypting your Square Application Id and Access Toki
 
 
 5. Select currency code that is relevant to your Square account.  Presently there is 
-support for USD, CAD, AUD, GBP, EUR, JPY.  The EUR currency is only supported for France and Ireland.
+support for USD, CAD, AUD, GBP, EUR, JPY.  The EUR currency is only supported for France, Ireland and Spain.
 
  ![OS_Square supported currency flags](assets/images/flags_292X40.png#flags)
 
