@@ -8,9 +8,15 @@
 <div class="License">
 	<h3>About OS Square</h3>
 	<p class="Owner">
-		<b>Version 3.2.3</b><br /><br />
+		<b>Version 3.2.4</b><br /><br />
 	</p>
 	<p>Payment provider module for Open Store to enable Square Credit Card Payments.</p><br />
+	<h4>Version 3.2.4</h4>
+	<ul>
+		<li>Add defensive check for cc only</li>
+		<li>Update readme</li>
+	</ul>
+	<hr />
 	<h4>Version 3.2.3</h4>
 	<ul>
 		<li>Update currency code options</li>
