@@ -33,6 +33,7 @@ else
     <script type="text/javascript">
         const appId = '@info.GetXmlProperty("genxml/textbox/applicationid", true)';
         const locationId = '@info.GetXmlProperty("genxml/textbox/locationname")';
+        const achButton = document.getElementById('ach-button');
 
         async function initializeCard(payments) {
             const card = await payments.card();
@@ -83,7 +84,7 @@ else
                     // disable the submit button as we await tokenization and make a
                     // payment request.
                     cardButton.disabled = true;
-                    achButton.disabled = true;
+                    if (achButton) { achButton.disabled = true; }
                     const token = await tokenize(paymentMethod, options);
 
                     if (token) {
@@ -97,13 +98,13 @@ else
                     }
                     else {
                         // If no token returned re-enable buttons
-                        achButton.disabled = false;
+                        if (achButton) { achButton.disabled = false; }
                         cardButton.disabled = false;
                     }
 
                 } catch (e) {
                     cardButton.disabled = false;
-                    achButton.disabled = false;
+                    if (achButton) { achButton.disabled = false; }
                     console.error(e.message);
                 }
             }
@@ -117,8 +118,6 @@ else
             });
 
             @if (showAch) {<text>
-
-            const achButton = document.getElementById('ach-button');
             achButton.addEventListener('click', async function (event) {
 
                 event.preventDefault();
