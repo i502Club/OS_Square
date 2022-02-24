@@ -33,7 +33,10 @@ else
     <script type="text/javascript">
         const appId = '@info.GetXmlProperty("genxml/textbox/applicationid", true)';
         const locationId = '@info.GetXmlProperty("genxml/textbox/locationname")';
-        const achButton = document.getElementById('ach-button');
+        var achButton;
+        $(function () {
+            achButton = document.getElementById('ach-button');
+        });
 
         async function initializeCard(payments) {
             const card = await payments.card();
