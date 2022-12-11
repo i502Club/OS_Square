@@ -11,6 +11,12 @@
 		<b>Version 3.2.4</b><br /><br />
 	</p>
 	<p>Payment provider module for Open Store to enable Square Credit Card Payments.</p><br />
+	<h4>Version 3.2.5</h4>
+	<ul>
+		<li>Bump Newtonsoft to 13.0.2</li>
+		<li>Fix achButton var init</li>
+	</ul>
+	<hr />
 	<h4>Version 3.2.4</h4>
 	<ul>
 		<li>Add defensive check for cc only</li>
