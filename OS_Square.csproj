@@ -78,9 +78,8 @@
       <HintPath>..\..\..\bin\NBrightDNN.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Polly, Version=7.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
       <HintPath>packages\Polly.7.2.2\lib\net472\Polly.dll</HintPath>
@@ -168,6 +167,7 @@
     <Content Include="Themes\config\img\logo.png" />
     <Content Include="Themes\config\img\square-pay.png" />
     <Content Include="Themes\config\js\os_square.js" />
+    <None Include="app.config" />
     <None Include="assets\images\cc_form.pdn" />
     <None Include="assets\images\flags.pdn" />
     <None Include="assets\images\plugin_installed.pdn" />
